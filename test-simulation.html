@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VWO 식단표 탭 - 시뮬레이션 테스트</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .test-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .test-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .test-header h1 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .test-status {
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            margin: 15px;
+            border-radius: 4px;
+        }
+
+        .test-status.error {
+            background: #ffebee;
+            border-left-color: #f44336;
+        }
+
+        .test-status.warning {
+            background: #fff3e0;
+            border-left-color: #ff9800;
+        }
+
+        .control-panel {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .control-panel button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #27ae60;
+        }
+
+        .btn-secondary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #2980b9;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        /* 실제 페이지 구조 모방 */
+        .fb__meal-plan {
+            background: white;
+        }
+
+        .meal-plan__tab-wrapper {
+            padding: 0;
+        }
+
+        .fb__common-tab {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            background: white;
+        }
+
+        .fb__common-tab__section {
+            flex: 1;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .fb__common-tab__section:hover {
+            background: #f5f5f5;
+        }
+
+        .fb__common-tab__section.active {
+            color: #2ecc71;
+            border-bottom-color: #2ecc71;
+            font-weight: bold;
+        }
+
+        .fb__common-tab__text {
+            display: block;
+        }
+
+        .meal-plan__tab-content {
+            display: none;
+            padding: 20px;
+            min-height: 300px;
+        }
+
+        .meal-plan__tab-content.active {
+            display: block;
+        }
+
+        .plan__next {
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        .devNextStepButton {
+            width: 100%;
+            padding: 15px;
+            background: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .devNextStepButton:hover {
+            background: #27ae60;
+        }
+
+        .test-log {
+            padding: 20px;
+            background: #f9f9f9;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+
+        .log-entry {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .log-success {
+            color: #2ecc71;
+        }
+
+        .log-error {
+            color: #e74c3c;
+        }
+
+        .log-info {
+            color: #3498db;
+        }
+
+        .checklist {
+            padding: 20px;
+        }
+
+        .checklist h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .checklist-item {
+            padding: 10px;
+            margin-bottom: 5px;
+            background: #f9f9f9;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+
+        .checklist-item.checked {
+            background: #e8f5e9;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🧪 VWO 식단표 탭 시뮬레이션</h1>
+            <p>코드 작동을 시뮬레이션으로 테스트합니다</p>
+        </div>
+
+        <div id="testStatus" class="test-status">
+            <strong>✅ 준비 완료</strong><br>
+            아래 버튼을 클릭하여 테스트를 시작하세요.
+        </div>
+
+        <div class="control-panel">
+            <button class="btn-primary" onclick="runTest()">
+                🚀 코드 실행 (식단표 탭 추가)
+            </button>
+            <button class="btn-secondary" onclick="resetTest()">
+                🔄 초기화
+            </button>
+            <button class="btn-secondary" onclick="showChecklist()">
+                📋 QA 체크리스트 보기
+            </button>
+            <button class="btn-danger" onclick="clearLogs()">
+                🗑️ 로그 지우기
+            </button>
+        </div>
+
+        <!-- 실제 페이지 구조 시뮬레이션 -->
+        <div class="fb__meal-plan devMealPlanTab">
+            <div class="meal-plan__tab-wrapper">
+                <div class="meal-plan__tab common-tab">
+                    <nav class="fb__common-tab">
+                        <span class="fb__common-tab__section js__tab active">
+                            <span class="fb__common-tab__text">정기식단 정보</span>
+                        </span>
+                        <span class="fb__common-tab__section js__tab">
+                            <span class="fb__common-tab__text">정기식단 후기 <em class="devCommentCount">1063</em></span>
+                        </span>
+                    </nav>
+                </div>
+
+                <div class="meal-plan__tab-content js__tab__content active">
+                    <h3>정기식단 정보</h3>
+                    <p>이 영역에는 정기식단 정보가 표시됩니다.</p>
+                </div>
+
+                <div class="meal-plan__tab-content js__tab__content">
+                    <h3>정기식단 후기</h3>
+                    <p>이 영역에는 후기가 표시됩니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="plan__next">
+            <button type="button" class="devNextStepButton" onclick="trackCTA()">
+                <div class="next__text">
+                    <span class="next__text__next">다음단계</span>
+                    <span class="next__text__guide">(캘린더/메뉴 확인)</span>
+                </div>
+            </button>
+        </div>
+
+        <div class="test-log" id="testLog">
+            <strong>📊 테스트 로그:</strong>
+        </div>
+    </div>
+
+    <script>
+        let testResults = {
+            tabAdded: false,
+            contentAdded: false,
+            eventsSetup: false,
+            ctaClicked: 0,
+            mealScheduleViewed: 0
+        };
+
+        function log(message, type = 'info') {
+            const logContainer = document.getElementById('testLog');
+            const entry = document.createElement('div');
+            entry.className = `log-entry log-${type}`;
+            const timestamp = new Date().toLocaleTimeString();
+            entry.innerHTML = `[${timestamp}] ${message}`;
+            logContainer.appendChild(entry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        function updateStatus(message, type = 'success') {
+            const statusDiv = document.getElementById('testStatus');
+            statusDiv.className = `test-status ${type === 'error' ? 'error' : type === 'warning' ? 'warning' : ''}`;
+            const icon = type === 'error' ? '❌' : type === 'warning' ? '⚠️' : '✅';
+            statusDiv.innerHTML = `<strong>${icon} ${message}</strong>`;
+        }
+
+        function runTest() {
+            log('테스트 시작...', 'info');
+            updateStatus('테스트 실행 중...', 'warning');
+
+            // 1. 식단표 탭 추가
+            setTimeout(() => {
+                if (addMealScheduleTab()) {
+                    log('✓ 식단표 탭 버튼 추가 성공', 'success');
+                    testResults.tabAdded = true;
+                } else {
+                    log('✗ 식단표 탭 버튼 추가 실패', 'error');
+                }
+            }, 300);
+
+            // 2. 컨텐츠 추가
+            setTimeout(() => {
+                if (addMealScheduleContent()) {
+                    log('✓ 식단표 컨텐츠 영역 추가 성공', 'success');
+                    testResults.contentAdded = true;
+                } else {
+                    log('✗ 식단표 컨텐츠 영역 추가 실패', 'error');
+                }
+            }, 600);
+
+            // 3. 이벤트 설정
+            setTimeout(() => {
+                setupTabClickEvents();
+                log('✓ 탭 클릭 이벤트 설정 완료', 'success');
+                testResults.eventsSetup = true;
+            }, 900);
+
+            // 4. 최종 확인
+            setTimeout(() => {
+                const allSuccess = testResults.tabAdded && testResults.contentAdded && testResults.eventsSetup;
+                if (allSuccess) {
+                    updateStatus('모든 테스트 통과! 식단표 탭이 정상적으로 추가되었습니다.', 'success');
+                    log('✓ 테스트 완료 - 모두 성공!', 'success');
+                } else {
+                    updateStatus('일부 테스트 실패. 로그를 확인하세요.', 'error');
+                    log('✗ 테스트 완료 - 일부 실패', 'error');
+                }
+            }, 1200);
+        }
+
+        function addMealScheduleTab() {
+            const tabNav = document.querySelector('.fb__common-tab');
+            if (!tabNav) {
+                log('탭 네비게이션을 찾을 수 없습니다.', 'error');
+                return false;
+            }
+
+            if (document.querySelector('.vwo-meal-schedule-tab')) {
+                log('식단표 탭이 이미 존재합니다.', 'warning');
+                return true;
+            }
+
+            const mealScheduleTab = document.createElement('span');
+            mealScheduleTab.className = 'fb__common-tab__section js__tab vwo-meal-schedule-tab';
+            mealScheduleTab.setAttribute('data-tab-index', '2');
+            mealScheduleTab.innerHTML = '<span class="fb__common-tab__text">식단표</span>';
+
+            tabNav.appendChild(mealScheduleTab);
+            return true;
+        }
+
+        function addMealScheduleContent() {
+            const tabWrapper = document.querySelector('.meal-plan__tab-wrapper');
+            if (!tabWrapper) {
+                log('탭 래퍼를 찾을 수 없습니다.', 'error');
+                return false;
+            }
+
+            if (document.querySelector('.vwo-meal-schedule-content')) {
+                log('식단표 컨텐츠가 이미 존재합니다.', 'warning');
+                return true;
+            }
+
+            const mealScheduleContent = document.createElement('div');
+            mealScheduleContent.className = 'meal-plan__tab-content js__tab__content vwo-meal-schedule-content';
+            mealScheduleContent.setAttribute('data-content-index', '2');
+            mealScheduleContent.innerHTML = `
+                <div style="text-align: center; padding: 40px 20px;">
+                    <h3 style="margin-bottom: 15px;">📅 요일별 식단 메뉴</h3>
+                    <p style="color: #666; margin-bottom: 20px;">
+                        식재료 수급에 따라 일부 메뉴가 변경될 수 있습니다.
+                    </p>
+                    <div style="background: #f5f5f5; padding: 30px; border-radius: 10px;">
+                        <p style="margin-bottom: 15px;">🍱 한우흑미죽</p>
+                        <p style="margin-bottom: 15px;">🥕 고구마수수죽</p>
+                        <p style="margin-bottom: 15px;">🥬 한우무죽</p>
+                        <p style="color: #999; font-size: 12px;">... 외 다수</p>
+                    </div>
+                </div>
+            `;
+
+            tabWrapper.appendChild(mealScheduleContent);
+            return true;
+        }
+
+        function setupTabClickEvents() {
+            const allTabs = document.querySelectorAll('.js__tab');
+            const allContents = document.querySelectorAll('.js__tab__content');
+
+            allTabs.forEach((tab, index) => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    log(`탭 클릭: ${tab.textContent.trim()}`, 'info');
+
+                    allTabs.forEach(t => t.classList.remove('active'));
+                    allContents.forEach(c => c.classList.remove('active'));
+
+                    tab.classList.add('active');
+                    if (allContents[index]) {
+                        allContents[index].classList.add('active');
+                    }
+
+                    if (tab.classList.contains('vwo-meal-schedule-tab')) {
+                        testResults.mealScheduleViewed++;
+                        log(`✓ 식단표 조회됨 (총 ${testResults.mealScheduleViewed}회)`, 'success');
+                    }
+                });
+            });
+        }
+
+        function trackCTA() {
+            testResults.ctaClicked++;
+            log(`✓ CTA 버튼 클릭됨 (총 ${testResults.ctaClicked}회)`, 'success');
+            alert('다음단계 버튼이 클릭되었습니다!\n\n실제 환경에서는 다음 페이지로 이동합니다.');
+        }
+
+        function resetTest() {
+            location.reload();
+        }
+
+        function clearLogs() {
+            const logContainer = document.getElementById('testLog');
+            logContainer.innerHTML = '<strong>📊 테스트 로그:</strong>';
+            log('로그가 초기화되었습니다.', 'info');
+        }
+
+        function showChecklist() {
+            const checklist = `
+                <div class="checklist">
+                    <h3>✅ QA 체크리스트</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check1">
+                        <label for="check1">"식단표" 탭이 보이는가?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check2">
+                        <label for="check2">탭이 "정기식단 후기" 다음에 있는가?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check3">
+                        <label for="check3">식단표 탭 클릭 시 컨텐츠가 전환되는가?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check4">
+                        <label for="check4">다른 탭들도 정상 작동하는가?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check5">
+                        <label for="check5">다음단계 버튼이 정상 작동하는가?</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="check6">
+                        <label for="check6">콘솔에 에러가 없는가?</label>
+                    </div>
+                </div>
+            `;
+
+            const testLog = document.getElementById('testLog');
+            testLog.innerHTML = checklist;
+
+            document.querySelectorAll('.checklist-item input').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    this.parentElement.classList.toggle('checked', this.checked);
+                });
+            });
+        }
+
+        // 페이지 로드 시
+        window.addEventListener('load', function() {
+            log('시뮬레이션 페이지 로드 완료', 'success');
+            log('준비되었습니다! "코드 실행" 버튼을 클릭하세요.', 'info');
+        });
+    </script>
+</body>
+</html>
