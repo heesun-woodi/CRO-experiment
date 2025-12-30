@@ -1,0 +1,486 @@
+<div class="daily-menu-wrap devDailyMenuWrap">
+        <div class="daily-menu__list custom-scroll" id="devDailyMenuListContents">
+            
+            
+            
+            
+            
+            <div class="daily-menu__item" data-status="">
+                <div class="menu-head">
+                    <span class="menu-date">2026.01.02 (금)</span>
+                </div>
+
+                <div class="menu-list devMenuList" data-tidx="5" data-max-set="1">
+                    <div class="devMenuSet menu-list__set" data-sidx="0" data-set-cnt="1">
+                        <!-- need 클래스 사용 -->
+                        <div class="menu-group devMenuItemWrapper" data-maxqty="1" data-group="5_10">
+                            <dl class="menu-item " data-groups="5_10" al="">
+                            <dt class="thumb devMenuItem" data-id="0000012031">
+                                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/product/00/00/01/20/31/m_0000012031.gif" alt="녹미죽">
+                            </dt>
+                            <dd class="cont">
+                                <div class="menu-name">
+                                    <span class="txt">녹미죽</span>
+                                </div>
+                                <ul class="controller option-up-down up_down--small devControlCntBox" style="display: none" data-group="5_10">
+                                    <li class="devCntMinus">
+                                        <button type="button" class="down up_down__minus devMealCountDown"></button>
+                                    </li>
+                                    <li>
+                                        <input type="text" value="1" class="up_down__input devMealCount" data-midx="0" readonly="">
+                                    </li>
+                                    <li class="devCntPlus">
+                                        <button type="button" class="up up_down__plus devMealCountUp"></button>
+                                    </li>
+                                </ul>
+                            </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="daily-menu__item" data-status="">
+                <div class="menu-head">
+                    <span class="menu-date">2026.01.03 (토)</span>
+                    <span class="menu-noti"><em>2</em>세트 배송</span>
+                </div>
+
+                <div class="menu-list devMenuList" data-tidx="6" data-max-set="2">
+                    <div class="devMenuSet menu-list__set" data-sidx="0" data-set-cnt="1">
+                        <!-- need 클래스 사용 -->
+                        <div class="menu-group devMenuItemWrapper" data-maxqty="1" data-group="6_10">
+                            <dl class="menu-item " data-groups="6_10" al="">
+                            <dt class="thumb devMenuItem" data-id="0000010004">
+                                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/product/00/00/01/00/04/m_0000010004.gif" alt="뉴그린죽">
+                            </dt>
+                            <dd class="cont">
+                                <div class="menu-name">
+                                    <span class="txt">뉴그린죽</span>
+                                </div>
+                                <ul class="controller option-up-down up_down--small devControlCntBox" style="display: none" data-group="6_10">
+                                    <li class="devCntMinus">
+                                        <button type="button" class="down up_down__minus devMealCountDown"></button>
+                                    </li>
+                                    <li>
+                                        <input type="text" value="1" class="up_down__input devMealCount" data-midx="0" readonly="">
+                                    </li>
+                                    <li class="devCntPlus">
+                                        <button type="button" class="up up_down__plus devMealCountUp"></button>
+                                    </li>
+                                </ul>
+                            </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="devMenuSet menu-list__set" data-sidx="1" data-set-cnt="1">
+                        <!-- need 클래스 사용 -->
+                        <div class="menu-group devMenuItemWrapper" data-maxqty="1" data-group="7_10">
+                            <dl class="menu-item " data-groups="7_10" al="">
+                            <dt class="thumb devMenuItem" data-id="0000010009">
+                                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/product/00/00/01/00/09/m_0000010009.gif" alt="사과죽">
+                            </dt>
+                            <dd class="cont">
+                                <div class="menu-name">
+                                    <span class="txt">사과죽</span>
+                                </div>
+                                <ul class="controller option-up-down up_down--small devControlCntBox" style="display: none" data-group="7_10">
+                                    <li class="devCntMinus">
+                                        <button type="button" class="down up_down__minus devMealCountDown"></button>
+                                    </li>
+                                    <li>
+                                        <input type="text" value="1" class="up_down__input devMealCount" data-midx="0" readonly="">
+                                    </li>
+                                    <li class="devCntPlus">
+                                        <button type="button" class="up up_down__plus devMealCountUp"></button>
+                                    </li>
+                                </ul>
+                            </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="daily-menu__item" data-status="">
+                <div class="menu-head">
+                    <span class="menu-date">2026.01.05 (월)</span>
+                </div>
+
+                <div class="menu-list devMenuList" data-tidx="8" data-max-set="1">
+                    <div class="devMenuSet menu-list__set" data-sidx="0" data-set-cnt="1">
+                        <!-- need 클래스 사용 -->
+                        <div class="menu-group devMenuItemWrapper" data-maxqty="1" data-group="8_10">
+                            <dl class="menu-item " data-groups="8_10" al="">
+                            <dt class="thumb devMenuItem" data-id="0000010005">
+                                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/product/00/00/01/00/05/m_0000010005.gif" alt="단호박죽">
+                            </dt>
+                            <dd class="cont">
+                                <div class="menu-name">
+                                    <span class="txt">단호박죽</span>
+                                </div>
+                                <ul class="controller option-up-down up_down--small devControlCntBox" style="display: none" data-group="8_10">
+                                    <li class="devCntMinus">
+                                        <button type="button" class="down up_down__minus devMealCountDown"></button>
+                                    </li>
+                                    <li>
+                                        <input type="text" value="1" class="up_down__input devMealCount" data-midx="0" readonly="">
+                                    </li>
+                                    <li class="devCntPlus">
+                                        <button type="button" class="up up_down__plus devMealCountUp"></button>
+                                    </li>
+                                </ul>
+                            </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="daily-menu__item" data-status="">
+                <div class="menu-head">
+                    <span class="menu-date">2026.01.06 (화)</span>
+                </div>
+
+                <div class="menu-list devMenuList" data-tidx="9" data-max-set="1">
+                    <div class="devMenuSet menu-list__set" data-sidx="0" data-set-cnt="1">
+                        <!-- need 클래스 사용 -->
+                        <div class="menu-group devMenuItemWrapper" data-maxqty="1" data-group="9_10">
+                            <dl class="menu-item " data-groups="9_10" al="">
+                            <dt class="thumb devMenuItem" data-id="0000010007">
+                                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/product/00/00/01/00/07/m_0000010007.gif" alt="브로컬리죽">
+                            </dt>
+                            <dd class="cont">
+                                <div class="menu-name">
+                                    <span class="txt">브로컬리죽</span>
+                                </div>
+                                <ul class="controller option-up-down up_down--small devControlCntBox" style="display: none" data-group="9_10">
+                                    <li class="devCntMinus">
+                                        <button type="button" class="down up_down__minus devMealCountDown"></button>
+                                    </li>
+                                    <li>
+                                        <input type="text" value="1" class="up_down__input devMealCount" data-midx="0" readonly="">
+                                    </li>
+                                    <li class="devCntPlus">
+                                        <button type="button" class="up up_down__plus devMealCountUp"></button>
+                                    </li>
+                                </ul>
+                            </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="daily-menu__item" data-status="">
+                <div class="menu-head">
+                    <span class="menu-date">2026.01.07 (수)</span>
+                </div>
+
+                <div class="menu-list devMenuList" data-tidx="10" data-max-set="1">
+                    <div class="devMenuSet menu-list__set" data-sidx="0" data-set-cnt="1">
+                        <!-- need 클래스 사용 -->
+                        <div class="menu-group devMenuItemWrapper" data-maxqty="1" data-group="10_10">
+                            <dl class="menu-item " data-groups="10_10" al="">
+                            <dt class="thumb devMenuItem" data-id="0000010015">
+                                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/product/00/00/01/00/15/m_0000010015.gif" alt="흑미죽">
+                            </dt>
+                            <dd class="cont">
+                                <div class="menu-name">
+                                    <span class="txt">흑미죽</span>
+                                </div>
+                                <ul class="controller option-up-down up_down--small devControlCntBox" style="display: none" data-group="10_10">
+                                    <li class="devCntMinus">
+                                        <button type="button" class="down up_down__minus devMealCountDown"></button>
+                                    </li>
+                                    <li>
+                                        <input type="text" value="1" class="up_down__input devMealCount" data-midx="0" readonly="">
+                                    </li>
+                                    <li class="devCntPlus">
+                                        <button type="button" class="up up_down__plus devMealCountUp"></button>
+                                    </li>
+                                </ul>
+                            </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="daily-menu__item" data-status="">
+                <div class="menu-head">
+                    <span class="menu-date">2026.01.08 (목)</span>
+                </div>
+
+                <div class="menu-list devMenuList" data-tidx="11" data-max-set="1">
+                    <div class="devMenuSet menu-list__set" data-sidx="0" data-set-cnt="1">
+                        <!-- need 클래스 사용 -->
+                        <div class="menu-group devMenuItemWrapper" data-maxqty="1" data-group="11_10">
+                            <dl class="menu-item " data-groups="11_10" al="">
+                            <dt class="thumb devMenuItem" data-id="0000010010">
+                                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/product/00/00/01/00/10/m_0000010010.gif" alt="애호박죽">
+                            </dt>
+                            <dd class="cont">
+                                <div class="menu-name">
+                                    <span class="txt">애호박죽</span>
+                                </div>
+                                <ul class="controller option-up-down up_down--small devControlCntBox" style="display: none" data-group="11_10">
+                                    <li class="devCntMinus">
+                                        <button type="button" class="down up_down__minus devMealCountDown"></button>
+                                    </li>
+                                    <li>
+                                        <input type="text" value="1" class="up_down__input devMealCount" data-midx="0" readonly="">
+                                    </li>
+                                    <li class="devCntPlus">
+                                        <button type="button" class="up up_down__plus devMealCountUp"></button>
+                                    </li>
+                                </ul>
+                            </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="daily-menu__item" data-status="">
+                <div class="menu-head">
+                    <span class="menu-date">2026.01.09 (금)</span>
+                </div>
+
+                <div class="menu-list devMenuList" data-tidx="12" data-max-set="1">
+                    <div class="devMenuSet menu-list__set" data-sidx="0" data-set-cnt="1">
+                        <!-- need 클래스 사용 -->
+                        <div class="menu-group devMenuItemWrapper" data-maxqty="1" data-group="12_10">
+                            <dl class="menu-item " data-groups="12_10" al="">
+                            <dt class="thumb devMenuItem" data-id="0000010008">
+                                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/product/00/00/01/00/08/m_0000010008.gif" alt="비타민죽">
+                            </dt>
+                            <dd class="cont">
+                                <div class="menu-name">
+                                    <span class="txt">비타민죽</span>
+                                </div>
+                                <ul class="controller option-up-down up_down--small devControlCntBox" style="display: none" data-group="12_10">
+                                    <li class="devCntMinus">
+                                        <button type="button" class="down up_down__minus devMealCountDown"></button>
+                                    </li>
+                                    <li>
+                                        <input type="text" value="1" class="up_down__input devMealCount" data-midx="0" readonly="">
+                                    </li>
+                                    <li class="devCntPlus">
+                                        <button type="button" class="up up_down__plus devMealCountUp"></button>
+                                    </li>
+                                </ul>
+                            </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="daily-menu__item" data-status="">
+                <div class="menu-head">
+                    <span class="menu-date">2026.01.10 (토)</span>
+                    <span class="menu-noti"><em>2</em>세트 배송</span>
+                </div>
+
+                <div class="menu-list devMenuList" data-tidx="13" data-max-set="2">
+                    <div class="devMenuSet menu-list__set" data-sidx="0" data-set-cnt="1">
+                        <!-- need 클래스 사용 -->
+                        <div class="menu-group devMenuItemWrapper" data-maxqty="1" data-group="13_10">
+                            <dl class="menu-item " data-groups="13_10" al="">
+                            <dt class="thumb devMenuItem" data-id="0000010001">
+                                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/product/00/00/01/00/01/m_0000010001.gif" alt="감자죽">
+                            </dt>
+                            <dd class="cont">
+                                <div class="menu-name">
+                                    <span class="txt">감자죽</span>
+                                </div>
+                                <ul class="controller option-up-down up_down--small devControlCntBox" style="display: none" data-group="13_10">
+                                    <li class="devCntMinus">
+                                        <button type="button" class="down up_down__minus devMealCountDown"></button>
+                                    </li>
+                                    <li>
+                                        <input type="text" value="1" class="up_down__input devMealCount" data-midx="0" readonly="">
+                                    </li>
+                                    <li class="devCntPlus">
+                                        <button type="button" class="up up_down__plus devMealCountUp"></button>
+                                    </li>
+                                </ul>
+                            </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="devMenuSet menu-list__set" data-sidx="1" data-set-cnt="1">
+                        <!-- need 클래스 사용 -->
+                        <div class="menu-group devMenuItemWrapper" data-maxqty="1" data-group="14_10">
+                            <dl class="menu-item " data-groups="14_10" al="">
+                            <dt class="thumb devMenuItem" data-id="0000010003">
+                                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/product/00/00/01/00/03/m_0000010003.gif" alt="기장죽">
+                            </dt>
+                            <dd class="cont">
+                                <div class="menu-name">
+                                    <span class="txt">기장죽</span>
+                                </div>
+                                <ul class="controller option-up-down up_down--small devControlCntBox" style="display: none" data-group="14_10">
+                                    <li class="devCntMinus">
+                                        <button type="button" class="down up_down__minus devMealCountDown"></button>
+                                    </li>
+                                    <li>
+                                        <input type="text" value="1" class="up_down__input devMealCount" data-midx="0" readonly="">
+                                    </li>
+                                    <li class="devCntPlus">
+                                        <button type="button" class="up up_down__plus devMealCountUp"></button>
+                                    </li>
+                                </ul>
+                            </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="daily-menu__item" data-status="">
+                <div class="menu-head">
+                    <span class="menu-date">2026.01.12 (월)</span>
+                </div>
+
+                <div class="menu-list devMenuList" data-tidx="15" data-max-set="1">
+                    <div class="devMenuSet menu-list__set" data-sidx="0" data-set-cnt="1">
+                        <!-- need 클래스 사용 -->
+                        <div class="menu-group devMenuItemWrapper" data-maxqty="1" data-group="15_10">
+                            <dl class="menu-item " data-groups="15_10" al="">
+                            <dt class="thumb devMenuItem" data-id="0000010011">
+                                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/product/00/00/01/00/11/m_0000010011.gif" alt="양배추죽">
+                            </dt>
+                            <dd class="cont">
+                                <div class="menu-name">
+                                    <span class="txt">양배추죽</span>
+                                </div>
+                                <ul class="controller option-up-down up_down--small devControlCntBox" style="display: none" data-group="15_10">
+                                    <li class="devCntMinus">
+                                        <button type="button" class="down up_down__minus devMealCountDown"></button>
+                                    </li>
+                                    <li>
+                                        <input type="text" value="1" class="up_down__input devMealCount" data-midx="0" readonly="">
+                                    </li>
+                                    <li class="devCntPlus">
+                                        <button type="button" class="up up_down__plus devMealCountUp"></button>
+                                    </li>
+                                </ul>
+                            </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="daily-menu__item" data-status="">
+                <div class="menu-head">
+                    <span class="menu-date">2026.01.13 (화)</span>
+                </div>
+
+                <div class="menu-list devMenuList" data-tidx="16" data-max-set="1">
+                    <div class="devMenuSet menu-list__set" data-sidx="0" data-set-cnt="1">
+                        <!-- need 클래스 사용 -->
+                        <div class="menu-group devMenuItemWrapper" data-maxqty="1" data-group="16_10">
+                            <dl class="menu-item " data-groups="16_10" al="">
+                            <dt class="thumb devMenuItem" data-id="0000010006">
+                                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/product/00/00/01/00/06/m_0000010006.gif" alt="배죽">
+                            </dt>
+                            <dd class="cont">
+                                <div class="menu-name">
+                                    <span class="txt">배죽</span>
+                                </div>
+                                <ul class="controller option-up-down up_down--small devControlCntBox" style="display: none" data-group="16_10">
+                                    <li class="devCntMinus">
+                                        <button type="button" class="down up_down__minus devMealCountDown"></button>
+                                    </li>
+                                    <li>
+                                        <input type="text" value="1" class="up_down__input devMealCount" data-midx="0" readonly="">
+                                    </li>
+                                    <li class="devCntPlus">
+                                        <button type="button" class="up up_down__plus devMealCountUp"></button>
+                                    </li>
+                                </ul>
+                            </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="daily-menu__item" data-status="">
+                <div class="menu-head">
+                    <span class="menu-date">2026.01.14 (수)</span>
+                </div>
+
+                <div class="menu-list devMenuList" data-tidx="17" data-max-set="1">
+                    <div class="devMenuSet menu-list__set" data-sidx="0" data-set-cnt="1">
+                        <!-- need 클래스 사용 -->
+                        <div class="menu-group devMenuItemWrapper" data-maxqty="1" data-group="17_10">
+                            <dl class="menu-item " data-groups="17_10" al="">
+                            <dt class="thumb devMenuItem" data-id="0000010013">
+                                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/product/00/00/01/00/13/m_0000010013.gif" alt="청경채죽">
+                            </dt>
+                            <dd class="cont">
+                                <div class="menu-name">
+                                    <span class="txt">청경채죽</span>
+                                </div>
+                                <ul class="controller option-up-down up_down--small devControlCntBox" style="display: none" data-group="17_10">
+                                    <li class="devCntMinus">
+                                        <button type="button" class="down up_down__minus devMealCountDown"></button>
+                                    </li>
+                                    <li>
+                                        <input type="text" value="1" class="up_down__input devMealCount" data-midx="0" readonly="">
+                                    </li>
+                                    <li class="devCntPlus">
+                                        <button type="button" class="up up_down__plus devMealCountUp"></button>
+                                    </li>
+                                </ul>
+                            </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="daily-menu__item" data-status="">
+                <div class="menu-head">
+                    <span class="menu-date">2026.01.15 (목)</span>
+                </div>
+
+                <div class="menu-list devMenuList" data-tidx="18" data-max-set="1">
+                    <div class="devMenuSet menu-list__set" data-sidx="0" data-set-cnt="1">
+                        <!-- need 클래스 사용 -->
+                        <div class="menu-group devMenuItemWrapper" data-maxqty="1" data-group="18_10">
+                            <dl class="menu-item " data-groups="18_10" al="">
+                            <dt class="thumb devMenuItem" data-id="0000010002">
+                                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/product/00/00/01/00/02/m_0000010002.gif" alt="고구마죽">
+                            </dt>
+                            <dd class="cont">
+                                <div class="menu-name">
+                                    <span class="txt">고구마죽</span>
+                                </div>
+                                <ul class="controller option-up-down up_down--small devControlCntBox" style="display: none" data-group="18_10">
+                                    <li class="devCntMinus">
+                                        <button type="button" class="down up_down__minus devMealCountDown"></button>
+                                    </li>
+                                    <li>
+                                        <input type="text" value="1" class="up_down__input devMealCount" data-midx="0" readonly="">
+                                    </li>
+                                    <li class="devCntPlus">
+                                        <button type="button" class="up up_down__plus devMealCountUp"></button>
+                                    </li>
+                                </ul>
+                            </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            </div>
+    </div>
