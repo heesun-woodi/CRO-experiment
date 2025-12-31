@@ -1,0 +1,578 @@
+# 푸드케어 클레 - 회원가입 페이지 HTML 구조 분석 문서
+
+## 📋 목차
+1. [전체 페이지 구조](#전체-페이지-구조)
+2. [섹션별 상세 구조](#섹션별-상세-구조)
+3. [회원가입 옵션 구성](#회원가입-옵션-구성)
+4. [컴포넌트 마크업 패턴](#컴포넌트-마크업-패턴)
+5. [클래싱 규칙](#클래싱-규칙)
+6. [로그인 페이지와의 비교](#로그인-페이지와의-비교)
+7. [HTML 구조 체크리스트](#html-구조-체크리스트)
+
+---
+
+## 전체 페이지 구조
+```
+<html>
+├── <head>
+│   ├── 메타 태그
+│   ├── 스타일시트
+│   └── 기타 리소스
+│
+└── <body>
+    ├── <nav> - 상단 헤더 네비게이션
+    ├── <article> - 메인 회원가입 영역
+    │   └── <region> - 회원가입 콘텐츠
+    ├── <nav> - 하단 바텀 네비게이션
+    ├── <footer> - 푸터 (레이어 팝업 포함)
+    ├── 소셜 미디어 링크들
+    └── 채팅 위젯 등
+```
+
+---
+
+## 섹션별 상세 구조
+
+### 1️⃣ 상단 헤더 (Header Banner)
+```html
+<banner>
+  <!-- 뒤로가기 버튼 -->
+  <button type="button">
+    <generic>뒤로가기</generic>
+  </button>
+  
+  <!-- 페이지 제목 -->
+  <generic>회원가입</generic>
+  
+  <!-- 검색 아이콘 버튼 -->
+  <button type="button">
+    <generic>search</generic>
+  </button>
+  
+  <!-- 장바구니 링크 -->
+  <link href="/shop/cart">
+    <generic>cart</generic>
+  </link>
+  
+  <!-- 메뉴 토글 버튼 -->
+  <button type="button">
+    <!-- 메뉴 토글 아이콘 -->
+  </button>
+  
+  <!-- 검색창 (숨김/표시 가능) -->
+  <textbox type="search" placeholder="">
+  <button type="button">
+    <generic>search</generic>
+  </button>
+  
+  <!-- 최근 검색어 섹션 -->
+  <generic>최근 검색어</generic>
+  <generic>최근 검색어가 없습니다.</generic>
+  
+  <!-- 추천 검색어 -->
+  <generic>추천 검색어</generic>
+  <list>
+    <listitem>
+      <link href="/shop/search/?searchText=한우솥밥">
+        한우솥밥
+      </link>
+    </listitem>
+    <listitem>
+      <link href="/shop/search/?searchText=오메가3">
+        오메가3
+      </link>
+    </listitem>
+    <!-- ... 더 많은 추천 검색어 ... -->
+  </list>
+</banner>
+```
+
+**역할:**
+- 회원가입 페이지 제목 표시
+- 뒤로가기 네비게이션
+- 검색 기능 제공
+- 장바구니 접근
+
+---
+
+### 2️⃣ 메인 회원가입 영역 (Main Article)
+```html
+<article>
+  <region>
+    <!-- 회원가입 배너 섹션 -->
+    <banner>
+      <!-- 메인 제목 -->
+      <heading>회원가입 메인</heading>
+      
+      <!-- 환영 메시지 -->
+      <generic>
+        반가워요! 에오신 것을 환영합니다.
+        <generic>클레 푸드케어</generic>
+      </generic>
+      
+      <!-- 혜택 설명 -->
+      <generic>
+        회원가입 후 다양한 혜택을 만나보세요!
+      </generic>
+    </banner>
+    
+    <!-- 회원가입 옵션 섹션 -->
+    
+    <!-- 1. 클레 푸드케어로 가입하기 -->
+    <generic>클레 푸드케어로 가입하기</generic>
+    <link href="/member/authentication">
+      <generic>클레 푸드케어로 가입</generic>
+    </link>
+    
+    <!-- 2. SNS 계정으로 가입하기 -->
+    <generic>SNS 계정으로 가입하기</generic>
+    
+    <!-- 카카오 계정으로 가입 -->
+    <link href="https://kauth.kakao.com/oauth/authorize?...">
+      카카오 계정으로 가입
+    </link>
+    
+    <!-- 네이버 계정으로 가입 -->
+    <link href="https://nid.naver.com/oauth2.0/authorize?...">
+      네이버 계정으로 가입
+    </link>
+  </region>
+</article>
+```
+
+**주요 특징:**
+- `<article>` + `<region>` 조합으로 의미론적 구조
+- 환영 메시지와 혜택 설명 포함
+- 3가지 회원가입 옵션 제공
+
+---
+
+## 회원가입 옵션 구성
+
+### 옵션 1: 클레 푸드케어 회원가입
+```html
+<generic>클레 푸드케어로 가입하기</generic>
+<link href="/member/authentication">
+  <generic>클레 푸드케어로 가입</generic>
+</link>
+```
+
+**특징:**
+- 직접 가입 페이지로 이동
+- URL: `/member/authentication`
+- 별도의 입력 폼 페이지에서 진행
+
+**가입 정보 (예상):**
+- 이메일 또는 아이디
+- 비밀번호
+- 개인 정보 (이름, 전화번호 등)
+- 약관 동의
+
+---
+
+### 옵션 2: 카카오 계정으로 가입
+```html
+<link href="https://kauth.kakao.com/oauth/authorize?client_id=e03e0cb3c2118d7f4152f6836f1c69da&redirect_uri=https://foodcare-cle.com/controller/member/kakao/login&response_type=code&state=1521923999">
+  카카오 계정으로 가입
+</link>
+```
+
+**특징:**
+- OAuth 2.0 인증 프로토콜 사용
+- 카카오 로그인 페이지로 리다이렉트
+- 사용자 동의 후 자동 가입/로그인
+
+**OAuth 파라미터:**
+| 파라미터 | 값 |
+|---------|-----|
+| client_id | e03e0cb3c2118d7f4152f6836f1c69da |
+| redirect_uri | https://foodcare-cle.com/controller/member/kakao/login |
+| response_type | code |
+| state | 1521923999 |
+
+---
+
+### 옵션 3: 네이버 계정으로 가입
+```html
+<link href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=Qoa1jCJ5O58Lxfv6J18i&redirect_uri=https%3A%2F%2Fwww.foodcare-cle.com%2Fcontroller%2Fmember%2Fnaver%2Flogin&state=1291789715">
+  네이버 계정으로 가입
+</link>
+```
+
+**특징:**
+- OAuth 2.0 인증 프로토콜 사용
+- 네이버 로그인 페이지로 리다이렉트
+- 사용자 동의 후 자동 가입/로그인
+
+**OAuth 파라미터:**
+| 파라미터 | 값 |
+|---------|-----|
+| response_type | code |
+| client_id | Qoa1jCJ5O58Lxfv6J18i |
+| redirect_uri | https://www.foodcare-cle.com/controller/member/naver/login |
+| state | 1291789715 |
+
+---
+
+## 페이지 레이아웃 플로우
+```
+┌─────────────────────────────────────┐
+│  뒤로가기  회원가입  검색  장바구니  │
+├─────────────────────────────────────┤
+│                                     │
+│    반가워요!                        │
+│    클레 푸드케어에 오신 것을        │
+│    환영합니다.                      │
+│                                     │
+│  회원가입 후 다양한 혜택을          │
+│  만나보세요!                        │
+│                                     │
+├─────────────────────────────────────┤
+│                                     │
+│  클레 푸드케어로 가입하기           │
+│                                     │
+│  [클레 푸드케어로 가입]             │
+│  (초록색 버튼)                      │
+│                                     │
+├─────────────────────────────────────┤
+│                                     │
+│  SNS 계정으로 가입하기              │
+│                                     │
+│  [카카오 계정으로 가입]             │
+│  (노란색 버튼)                      │
+│                                     │
+│  [네이버 계정으로 가입]             │
+│  (초록색 버튼)                      │
+│                                     │
+└─────────────────────────────────────┘
+```
+
+---
+
+## 컴포넌트 마크업 패턴
+
+### 1. 섹션 타이틀 패턴
+```html
+<!-- 회원가입 옵션 타이틀 -->
+<generic>클레 푸드케어로 가입하기</generic>
+<generic>SNS 계정으로 가입하기</generic>
+```
+
+---
+
+### 2. 버튼/링크 패턴
+```html
+<!-- 클레 푸드케어 가입 링크 -->
+<link href="/member/authentication">
+  <generic>클레 푸드케어로 가입</generic>
+</link>
+
+<!-- 카카오 OAuth 링크 -->
+<link href="https://kauth.kakao.com/oauth/authorize?...">
+  카카오 계정으로 가입
+</link>
+
+<!-- 네이버 OAuth 링크 -->
+<link href="https://nid.naver.com/oauth2.0/authorize?...">
+  네이버 계정으로 가입
+</link>
+```
+
+---
+
+### 3. 텍스트 구조 패턴
+```html
+<!-- 환영 메시지 -->
+<generic>
+  반가워요! 에오신 것을 환영합니다.
+  <generic>클레 푸드케어</generic>
+</generic>
+
+<!-- 혜택 설명 -->
+<generic>
+  회원가입 후 다양한 혜택을 만나보세요!
+</generic>
+```
+
+---
+
+### 4. 배너 섹션 패턴
+```html
+<banner>
+  <heading>회원가입 메인</heading>
+  <generic>환영 메시지</generic>
+  <generic>혜택 설명</generic>
+</banner>
+```
+
+---
+
+## 하단 네비게이션 (Bottom Navigation)
+```html
+<navigation>
+  <!-- 전체메뉴 링크 -->
+  <link href="#navigation">전체메뉴</link>
+  
+  <!-- 홈 링크 -->
+  <link href="/">홈</link>
+  
+  <!-- 식단주문 버튼 -->
+  <button type="button">식단주문</button>
+  
+  <!-- 스케줄관리 링크 -->
+  <link href="/mypage/manageSchedule">스케줄관리</link>
+  
+  <!-- 마이페이지 링크 -->
+  <link href="/mypage/">마이페이지</link>
+</navigation>
+```
+
+**특징:**
+- 모바일 환경에서 고정 위치 바텀 네비게이션
+- 5개 주요 메뉴 포함
+- 로그인/회원가입 페이지와 동일한 구조
+
+---
+
+## 클래싱 규칙
+
+### 현재 사이트의 클래싱 규칙 분석
+
+사이트에서는 **BEM 방식과 유사한 패턴**을 사용하고 있습니다:
+
+#### 1. 배너/섹션 클래싱
+```css
+.banner                    /* 배너 블록 */
+.banner__title             /* 배너 제목 */
+.banner__subtitle          /* 배너 부제목 */
+```
+
+#### 2. 텍스트 구조
+```css
+.text-primary              /* 주요 텍스트 */
+.text-secondary            /* 보조 텍스트 */
+.text-highlight            /* 강조 텍스트 */
+```
+
+#### 3. 링크/버튼
+```css
+.link                      /* 기본 링크 */
+.link--oauth               /* OAuth 링크 */
+.button                    /* 기본 버튼 */
+.button--primary           /* 주요 버튼 */
+.button--social            /* 소셜 버튼 */
+```
+
+---
+
+## 로그인 페이지와의 비교
+
+### 공통점
+
+| 항목 | 로그인 | 회원가입 |
+|------|--------|---------|
+| 헤더 | ✅ | ✅ |
+| 뒤로가기 | ✅ | ✅ |
+| 검색 | ✅ | ✅ |
+| 장바구니 | ✅ | ✅ |
+| 메뉴 토글 | ✅ | ✅ |
+| 하단 네비게이션 | ✅ | ✅ |
+| 푸터 | ✅ | ✅ |
+| OAuth (카카오, 네이버) | ✅ | ✅ |
+
+### 차이점
+
+| 항목 | 로그인 | 회원가입 |
+|------|--------|---------|
+| **메인 콘텐츠** | 폼 입력 | 옵션 선택 |
+| **필드** | 아이디, 비밀번호, 인증번호 | 없음 (옵션만) |
+| **제목** | "로그인 페이지" | "회원가입 메인" |
+| **추가 링크** | 아이디 찾기, 비회원 주문조회 | 혜택 설명 |
+| **환영 메시지** | 없음 | "반가워요! 클레 푸드케어에..." |
+| **복잡도** | 중간 (폼 유효성 필요) | 낮음 (옵션 선택만) |
+
+---
+
+## 회원가입 플로우
+
+### 플로우 다이어그램
+```
+회원가입 페이지 (/member/joinMain)
+│
+├─→ [클레 푸드케어로 가입] → /member/authentication
+│   │
+│   └─→ 이메일 입력
+│       └─→ 비밀번호 설정
+│           └─→ 개인정보 입력
+│               └─→ 약관 동의
+│                   └─→ 가입 완료
+│
+├─→ [카카오 계정으로 가입] → Kakao OAuth
+│   │
+│   └─→ Kakao 로그인
+│       └─→ 권한 동의
+│           └─→ Callback: /controller/member/kakao/login
+│               └─→ 자동 가입/로그인
+│
+└─→ [네이버 계정으로 가입] → Naver OAuth
+    │
+    └─→ Naver 로그인
+        └─→ 권한 동의
+            └─→ Callback: /controller/member/naver/login
+                └─→ 자동 가입/로그인
+```
+
+---
+
+## OAuth 콜백 URL
+
+### 카카오
+
+**요청 URL:**
+```
+https://kauth.kakao.com/oauth/authorize?
+  client_id=e03e0cb3c2118d7f4152f6836f1c69da&
+  redirect_uri=https://foodcare-cle.com/controller/member/kakao/login&
+  response_type=code&
+  state=1521923999
+```
+
+**콜백 URL:**
+```
+https://foodcare-cle.com/controller/member/kakao/login?code=...&state=1521923999
+```
+
+---
+
+### 네이버
+
+**요청 URL:**
+```
+https://nid.naver.com/oauth2.0/authorize?
+  response_type=code&
+  client_id=Qoa1jCJ5O58Lxfv6J18i&
+  redirect_uri=https%3A%2F%2Fwww.foodcare-cle.com%2Fcontroller%2Fmember%2Fnaver%2Flogin&
+  state=1291789715
+```
+
+**콜백 URL:**
+```
+https://www.foodcare-cle.com/controller/member/naver/login?code=...&state=1291789715
+```
+
+---
+
+## 추천 마크업 개선 방안
+
+### 현재 구조 분석
+
+✅ **좋은 점:**
+- 의미론적 요소 사용 (`<article>`, `<banner>`)
+- 명확한 섹션 구분
+- 링크 구조화
+
+⚠️ **개선 가능 점:**
+```html
+<!-- ❌ 현재: 일반 generic으로 섹션 타이틀 -->
+<generic>클레 푸드케어로 가입하기</generic>
+
+<!-- ✅ 권장: heading 태그 사용 -->
+<h2>클레 푸드케어로 가입하기</h2>
+
+<!-- ❌ 현재: 중첩된 generic -->
+<generic>
+  반가워요! 에오신 것을 환영합니다.
+  <generic>클레 푸드케어</generic>
+</generic>
+
+<!-- ✅ 권장: 적절한 태그 구조 -->
+<p>
+  반가워요! 에오신 것을 환영합니다.
+  <strong>클레 푸드케어</strong>
+</p>
+```
+
+---
+
+## HTML 구조 체크리스트
+
+회원가입 페이지 구현 시 확인 사항:
+
+- [x] `<article>` + `<region>` 로 메인 콘텐츠 감싸기
+- [x] `<banner>` 로 환영 메시지 섹션 감싸기
+- [x] `<heading>` 으로 페이지 제목 표시
+- [x] 3가지 회원가입 옵션 제공
+- [x] OAuth 링크에 올바른 파라미터 포함
+- [x] 링크 href 속성 정확성
+- [x] 네비게이션은 `<nav>` 태그로
+- [x] 푸터는 `<footer>` 태그로
+- [x] 헤더는 `<banner>` 태그로
+- [x] SNS/소셜 로그인 링크 포함
+- [x] 고객 서비스 정보 포함
+
+---
+
+## 주요 URL 모음
+
+### 회원가입 관련
+
+| 항목 | URL |
+|------|-----|
+| 회원가입 메인 | `/member/joinMain` |
+| 클레 직접 가입 | `/member/authentication` |
+| 카카오 콜백 | `/controller/member/kakao/login` |
+| 네이버 콜백 | `/controller/member/naver/login` |
+| 로그인 페이지 | `/member/login` |
+
+### OAuth 공급자
+
+| 공급자 | 엔드포인트 |
+|--------|----------|
+| 카카오 | https://kauth.kakao.com/oauth/authorize |
+| 네이버 | https://nid.naver.com/oauth2.0/authorize |
+
+### OAuth Client ID
+
+| 공급자 | Client ID |
+|--------|-----------|
+| 카카오 | e03e0cb3c2118d7f4152f6836f1c69da |
+| 네이버 | Qoa1jCJ5O58Lxfv6J18i |
+
+---
+
+## 참고
+
+**페이지 URL:** `https://www.foodcare-cle.com/member/joinMain`
+**뷰포트:** 375px (모바일)
+**페이지 타입:** 회원가입 옵션 선택 페이지
+**다음 단계:** 선택한 옵션에 따라 상이
+- 클레: `/member/authentication` (폼 입력)
+- 카카오/네이버: OAuth 공급자 페이지
+
+---
+
+## 추가 자료
+
+### 연락처 정보
+
+- **대표번호:** 1577-7003
+- **영업시간:** 평일 09:00 ~ 17:00 (점심 13:00~14:00)
+- **휴무:** 공휴일, 일요일
+- **이메일:** foodcare@foodcare-cle.com
+- **사업자번호:** 130-86-48124
+
+### 소셜 미디어 링크
+
+| SNS | URL |
+|-----|-----|
+| 블로그 | http://blog.naver.com/nature_food |
+| 인스타그램 | https://www.instagram.com/foodcare_cle/ |
+| 유튜브 | https://youtube.com/@user-my8eg1cw4n |
+| 스마트스토어 | https://smartstore.naver.com/eusik |
+
+---
+
+**문서 생성일:** 2025년 1월
+**사이트:** https://www.foodcare-cle.com/member/joinMain
+**담당자:** CRO 실험 팀
+**버전:** 1.0
