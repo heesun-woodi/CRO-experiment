@@ -1,0 +1,834 @@
+# 푸드케어 클레 - 마이페이지 HTML 구조 분석 문서
+
+## 📋 목차
+1. [전체 페이지 구조](#전체-페이지-구조)
+2. [섹션별 상세 구조](#섹션별-상세-구조)
+3. [사용자 정보 영역](#사용자-정보-영역)
+4. [진행현황 섹션](#진행현황-섹션)
+5. [메뉴 네비게이션](#메뉴-네비게이션)
+6. [컴포넌트 마크업 패턴](#컴포넌트-마크업-패턴)
+7. [로그인/회원가입과의 비교](#로그인-회원가입과의-비교)
+8. [HTML 구조 체크리스트](#html-구조-체크리스트)
+
+---
+
+## 전체 페이지 구조
+```
+<html>
+├── <head>
+│   ├── 메타 태그
+│   ├── 스타일시트
+│   └── 기타 리소스
+│
+└── <body>
+    ├── <nav> - 상단 사용자 정보 네비게이션
+    ├── <nav> - 드로어 메뉴
+    ├── <article> - 메인 마이페이지 영역
+    │   ├── 사용자 프로필 영역
+    │   ├── 배너 슬라이더
+    │   ├── 진행현황 섹션
+    │   └── 메뉴 네비게이션 그룹
+    ├── <nav> - 하단 바텀 네비게이션
+    ├── <footer> - 푸터 (레이어 팝업 포함)
+    └── 기타 위젯들
+```
+
+---
+
+## 섹션별 상세 구조
+
+### 1️⃣ 상단 헤더 (Header Banner)
+```html
+<banner>
+  <!-- 뒤로가기 버튼 -->
+  <button type="button">
+    <generic>뒤로가기</generic>
+  </button>
+  
+  <!-- 페이지 제목 -->
+  <generic>마이페이지</generic>
+  
+  <!-- 검색 아이콘 버튼 -->
+  <button type="button">
+    <generic>search</generic>
+  </button>
+  
+  <!-- 장바구니 링크 -->
+  <link href="/shop/cart">
+    <generic>cart</generic>
+  </link>
+  
+  <!-- 메뉴 토글 버튼 -->
+  <button type="button">
+    <!-- 메뉴 토글 아이콘 -->
+  </button>
+  
+  <!-- 검색창 (숨김/표시 가능) -->
+  <textbox type="search" placeholder="">
+  <button type="button">
+    <generic>search</generic>
+  </button>
+  
+  <!-- 최근 검색어 섹션 -->
+  <generic>최근 검색어</generic>
+  <generic>최근 검색어가 없습니다.</generic>
+  
+  <!-- 추천 검색어 -->
+  <generic>추천 검색어</generic>
+  <list>
+    <listitem>
+      <link href="/shop/search/?searchText=한우솥밥">
+        한우솥밥
+      </link>
+    </listitem>
+    <!-- ... 더 많은 추천 검색어 ... -->
+  </list>
+</banner>
+```
+
+---
+
+### 2️⃣ 상단 네비게이션 (User Info Navigation)
+```html
+<navigation>
+  <!-- 사용자 이름 -->
+  <generic>우희선님</generic>
+  
+  <!-- 로그아웃 링크 -->
+  <link href="/member/logout">로그아웃</link>
+  
+  <!-- 드로어 메뉴 닫기 버튼 -->
+  <button type="button">드로어메뉴 닫기 버튼</button>
+  
+  <!-- 마이페이지 메뉴 -->
+  <list>
+    <listitem>
+      <link href="/mypage/manageSchedule">
+        <generic>스케줄관리</generic>
+      </link>
+    </listitem>
+    <listitem>
+      <link href="/mypage/coupon">
+        <!-- 쿠폰 -->
+      </link>
+    </listitem>
+    <listitem>
+      <link href="/mypage/mileage">
+        <generic>적립금</generic>
+      </link>
+    </listitem>
+    <listitem>
+      <link href="/mypage/deposit">
+        <generic>예치금</generic>
+      </link>
+    </listitem>
+  </list>
+</navigation>
+```
+
+**역할:**
+- 로그인된 사용자 이름 표시
+- 로그아웃 기능
+- 빠른 메뉴 접근 (스케줄, 쿠폰, 적립금, 예치금)
+
+---
+
+### 3️⃣ 메인 마이페이지 영역 (Main Article)
+```html
+<article>
+  <region>
+    <!-- 페이지 제목 -->
+    <heading>마이페이지</heading>
+    
+    <!-- 사용자 정보 영역 -->
+    <region>
+      <!-- 사용자 레벨 이미지 -->
+      <image alt="FRIENDS">
+      <generic>FRIENDS</generic>
+      
+      <!-- 사용자 이름 -->
+      <generic>우희선</generic>
+      
+      <!-- 추천 코드 -->
+      <generic>추천코드</generic>
+      <generic>1dgy6w6m</generic>
+      
+      <!-- 등급 혜택 링크 -->
+      <link href="/contents/benefitsGuide">등급혜택</link>
+      
+      <!-- 쿠폰 -->
+      <link href="/mypage/coupon">
+        <generic>0</generic>
+      </link>
+      <generic>쿠폰</generic>
+      
+      <!-- 적립금 -->
+      <link href="/mypage/mileage">
+        <generic>0</generic>
+      </link>
+      <generic>적립금</generic>
+      
+      <!-- 예치금 -->
+      <link href="/mypage/deposit">
+        <generic>0</generic>
+      </link>
+      <generic>예치금</generic>
+      
+      <!-- 작성 가능한 후기 -->
+      <link href="/mypage/myGoodsReview/regular/N">
+        작성 가능한 후기
+      </link>
+    </region>
+    
+    <!-- 배너 슬라이더 -->
+    <link href="https://www.foodcare-cle.com/event/eventDetail/623">
+      <image alt="M_마이페이지 메인 상시배너">
+    </link>
+    <link href="https://www.foodcare-cle.com/shop/goodsView/0000010966">
+      <image alt="M_마이페이지 메인 상시배너">
+    </link>
+    
+    <!-- 슬라이드 컨트롤 -->
+    <button>Go to slide 1</button>
+    <button>Go to slide 2</button>
+    
+    <!-- 진행현황 섹션 -->
+    <heading>진행현황</heading>
+    <generic>진행현황</generic>
+    
+    <!-- 진행현황 탭 네비게이션 -->
+    <navigation>
+      <generic>정기식단</generic>
+      <generic>간식/유아용품</generic>
+    </navigation>
+    
+    <!-- 식단 상태 탭 -->
+    <list>
+      <listitem><generic>진행예정</generic></listitem>
+      <listitem><generic>진행중</generic></listitem>
+      <listitem><generic>시작일 미정</generic></listitem>
+      <listitem><generic>배송중단</generic></listitem>
+    </list>
+    
+    <!-- 상태별 메시지 -->
+    <generic>진행예정인 식단이 없습니다.</generic>
+    <generic>진행중인 식단이 없습니다.</generic>
+    <generic>시작일 미정인 식단이 없습니다.</generic>
+    <generic>배송중단인 식단이 없습니다.</generic>
+    <generic>정기 식단이 없습니다.</generic>
+    
+    <!-- 주문 상태 탭 -->
+    <list>
+      <listitem><generic>입금예정</generic></listitem>
+      <listitem><generic>입금확인</generic></listitem>
+      <listitem><generic>배송준비중</generic></listitem>
+      <listitem><generic>배송중</generic></listitem>
+      <listitem><generic>배송완료</generic></listitem>
+    </list>
+    
+    <!-- 주문 목록 (비어있음) -->
+    <list>
+      <listitem></listitem>
+      <listitem></listitem>
+      <listitem></listitem>
+    </list>
+    
+    <!-- 메뉴 네비게이션 그룹 -->
+    
+    <!-- 나의 주문 관리 -->
+    <generic>나의 주문 관리</generic>
+    <link href="/mypage/manageSchedule">스케줄 관리</link>
+    <link href="/mypage/orderHistory">주문 배송 조회</link>
+    <link href="/mypage/returnHistory">취소/교환/반품 조회</link>
+    
+    <!-- 나의 혜택 관리 -->
+    <generic>나의 혜택 관리</generic>
+    <link href="/mypage/coupon">쿠폰</link>
+    <link href="/mypage/mileage">적립금</link>
+    <link href="/mypage/deposit">예치금</link>
+    
+    <!-- 나의 커뮤니티 -->
+    <generic>나의 커뮤니티</generic>
+    <link href="/mypage/myInquiry">1:1 문의</link>
+    <link href="/mypage/myGoodsReview/regular/N">상품 후기</link>
+    <link href="/mypage/myGoodsInquiry">상품 문의</link>
+    <link href="/mypage/eventParticipation">이벤트 참여 현황</link>
+    <link href="/mypage/myCafeNotification">이유식 카페 신상 알림</link>
+    
+    <!-- 나의 정보 관리 -->
+    <generic>나의 정보 관리</generic>
+    <link href="/mypage/profile">회원정보 수정</link>
+    <link href="#">클레페이 관리</link>
+    <link href="/mypage/addressBook">배송지 관리</link>
+    <link href="/mypage/secede">회원탈퇴</link>
+  </region>
+</article>
+```
+
+---
+
+## 사용자 정보 영역
+
+### 프로필 카드 구조
+```html
+<region>
+  <!-- 사용자 레벨 -->
+  <image alt="FRIENDS">
+  <generic>FRIENDS</generic>
+  
+  <!-- 사용자 이름 -->
+  <generic>우희선</generic>
+  
+  <!-- 추천 코드 (복사 가능) -->
+  <generic>추천코드</generic>
+  <generic>1dgy6w6m</generic>
+  
+  <!-- 등급 혜택 링크 -->
+  <link href="/contents/benefitsGuide">등급혜택</link>
+  
+  <!-- 혜택 정보 -->
+  <link href="/mypage/coupon">
+    <generic>0</generic>  <!-- 쿠폰 개수 -->
+  </link>
+  <generic>쿠폰</generic>
+  
+  <link href="/mypage/mileage">
+    <generic>0</generic>  <!-- 적립금 금액 -->
+  </link>
+  <generic>적립금</generic>
+  
+  <link href="/mypage/deposit">
+    <generic>0</generic>  <!-- 예치금 금액 -->
+  </link>
+  <generic>예치금</generic>
+  
+  <!-- 후기 작성 링크 -->
+  <link href="/mypage/myGoodsReview/regular/N">
+    작성 가능한 후기
+  </link>
+</region>
+```
+
+**표시 정보:**
+| 항목 | 설명 | 링크 |
+|------|------|------|
+| 레벨 | FRIENDS | - |
+| 이름 | 우희선 | - |
+| 추천코드 | 1dgy6w6m | 복사 가능 |
+| 등급혜택 | 혜택 상세 | `/contents/benefitsGuide` |
+| 쿠폰 | 개수 표시 (0) | `/mypage/coupon` |
+| 적립금 | 금액 표시 (0) | `/mypage/mileage` |
+| 예치금 | 금액 표시 (0) | `/mypage/deposit` |
+| 후기 | 작성 가능 개수 | `/mypage/myGoodsReview/regular/N` |
+
+---
+
+## 진행현황 섹션
+
+### 섹션 구조
+```html
+<section>
+  <heading>진행현황</heading>
+  <generic>진행현황</generic>
+  
+  <!-- 탭 네비게이션 -->
+  <navigation>
+    <generic>정기식단</generic>
+    <generic>간식/유아용품</generic>
+  </navigation>
+  
+  <!-- 정기식단 상태 탭 -->
+  <list>
+    <listitem><generic>진행예정</generic></listitem>
+    <listitem><generic>진행중</generic></listitem>
+    <listitem><generic>시작일 미정</generic></listitem>
+    <listitem><generic>배송중단</generic></listitem>
+  </list>
+  
+  <!-- 각 상태별 메시지 -->
+  <generic>진행예정인 식단이 없습니다.</generic>
+  <generic>진행중인 식단이 없습니다.</generic>
+  <generic>시작일 미정인 식단이 없습니다.</generic>
+  <generic>배송중단인 식단이 없습니다.</generic>
+  <generic>정기 식단이 없습니다.</generic>
+</section>
+```
+
+### 주문 상태 탭
+```html
+<section>
+  <!-- 주문 상태 탭 -->
+  <list>
+    <listitem><generic>입금예정</generic></listitem>
+    <listitem><generic>입금확인</generic></listitem>
+    <listitem><generic>배송준비중</generic></listitem>
+    <listitem><generic>배송중</generic></listitem>
+    <listitem><generic>배송완료</generic></listitem>
+  </list>
+  
+  <!-- 주문 목록 (현재 비어있음) -->
+  <list>
+    <listitem></listitem>
+    <listitem></listitem>
+    <listitem></listitem>
+  </list>
+</section>
+```
+
+**상태 설명:**
+
+| 정기식단 상태 | 설명 |
+|-------------|------|
+| 진행예정 | 시작 전 예정된 식단 |
+| 진행중 | 현재 배송 중인 식단 |
+| 시작일 미정 | 시작 날짜 미확정 |
+| 배송중단 | 구독 중지된 식단 |
+
+| 주문 상태 | 설명 |
+|----------|------|
+| 입금예정 | 입금 대기 중 |
+| 입금확인 | 입금 완료, 배송 준비 중 |
+| 배송준비중 | 상품 준비 중 |
+| 배송중 | 배송 진행 중 |
+| 배송완료 | 배송 완료 |
+
+---
+
+## 메뉴 네비게이션
+
+### 메뉴 구조 - 4개 그룹
+
+#### 1. 나의 주문 관리
+```html
+<section>
+  <generic>나의 주문 관리</generic>
+  
+  <link href="/mypage/manageSchedule">스케줄 관리</link>
+  <!-- 정기 식단 구독 일정 관리 -->
+  
+  <link href="/mypage/orderHistory">주문 배송 조회</link>
+  <!-- 주문 내역 및 배송 상태 조회 -->
+  
+  <link href="/mypage/returnHistory">취소/교환/반품 조회</link>
+  <!-- 반품 및 교환 신청 내역 -->
+</section>
+```
+
+**메뉴 설명:**
+| 메뉴 | URL | 역할 |
+|------|-----|------|
+| 스케줄 관리 | `/mypage/manageSchedule` | 구독 일정 변경/중지 |
+| 주문 배송 조회 | `/mypage/orderHistory` | 주문 내역 및 배송 추적 |
+| 취소/교환/반품 조회 | `/mypage/returnHistory` | 반품/교환 신청 및 현황 |
+
+---
+
+#### 2. 나의 혜택 관리
+```html
+<section>
+  <generic>나의 혜택 관리</generic>
+  
+  <link href="/mypage/coupon">쿠폰</link>
+  <!-- 보유 중인 쿠폰 목록 -->
+  
+  <link href="/mypage/mileage">적립금</link>
+  <!-- 적립금 보유 및 사용 내역 -->
+  
+  <link href="/mypage/deposit">예치금</link>
+  <!-- 예치금 입금/출금 관리 -->
+</section>
+```
+
+**메뉴 설명:**
+| 메뉴 | URL | 역할 |
+|------|-----|------|
+| 쿠폰 | `/mypage/coupon` | 쿠폰 확인 및 사용 |
+| 적립금 | `/mypage/mileage` | 적립금 조회 및 사용 |
+| 예치금 | `/mypage/deposit` | 예치금 관리 |
+
+---
+
+#### 3. 나의 커뮤니티
+```html
+<section>
+  <generic>나의 커뮤니티</generic>
+  
+  <link href="/mypage/myInquiry">1:1 문의</link>
+  <!-- 고객센터 1:1 문의 내역 -->
+  
+  <link href="/mypage/myGoodsReview/regular/N">상품 후기</link>
+  <!-- 작성한 상품 후기 목록 -->
+  
+  <link href="/mypage/myGoodsInquiry">상품 문의</link>
+  <!-- 상품에 대한 문의 내역 -->
+  
+  <link href="/mypage/eventParticipation">이벤트 참여 현황</link>
+  <!-- 참여한 이벤트 내역 -->
+  
+  <link href="/mypage/myCafeNotification">이유식 카페 신상 알림</link>
+  <!-- 카페 신상품 알림 설정 -->
+</section>
+```
+
+**메뉴 설명:**
+| 메뉴 | URL | 역할 |
+|------|-----|------|
+| 1:1 문의 | `/mypage/myInquiry` | 고객 문의 |
+| 상품 후기 | `/mypage/myGoodsReview/regular/N` | 후기 작성 및 관리 |
+| 상품 문의 | `/mypage/myGoodsInquiry` | 상품 관련 문의 |
+| 이벤트 참여 현황 | `/mypage/eventParticipation` | 참여 이벤트 확인 |
+| 카페 신상 알림 | `/mypage/myCafeNotification` | 신상품 알림 설정 |
+
+---
+
+#### 4. 나의 정보 관리
+```html
+<section>
+  <generic>나의 정보 관리</generic>
+  
+  <link href="/mypage/profile">회원정보 수정</link>
+  <!-- 개인 정보 수정 (이름, 연락처 등) -->
+  
+  <link href="#">클레페이 관리</link>
+  <!-- 클레페이 설정 (비활성화) -->
+  
+  <link href="/mypage/addressBook">배송지 관리</link>
+  <!-- 배송지 등록 및 관리 -->
+  
+  <link href="/mypage/secede">회원탈퇴</link>
+  <!-- 계정 탈퇴 -->
+</section>
+```
+
+**메뉴 설명:**
+| 메뉴 | URL | 역할 |
+|------|-----|------|
+| 회원정보 수정 | `/mypage/profile` | 개인정보 변경 |
+| 클레페이 관리 | `#` | 간편결제 설정 (미개설) |
+| 배송지 관리 | `/mypage/addressBook` | 배송지 등록/관리 |
+| 회원탈퇴 | `/mypage/secede` | 계정 탈퇴 |
+
+---
+
+## 하단 네비게이션 (Bottom Navigation)
+```html
+<navigation>
+  <!-- 전체메뉴 링크 -->
+  <link href="#navigation">전체메뉴</link>
+  
+  <!-- 홈 링크 -->
+  <link href="/">홈</link>
+  
+  <!-- 식단주문 버튼 -->
+  <button type="button">식단주문</button>
+  
+  <!-- 스케줄관리 링크 -->
+  <link href="/mypage/manageSchedule">스케줄관리</link>
+  
+  <!-- 마이페이지 링크 (현재 페이지) -->
+  <link href="/mypage/">마이페이지</link>
+</navigation>
+```
+
+**특징:**
+- 모바일 환경에서 고정 위치 바텀 네비게이션
+- 5개 주요 메뉴 포함
+- "마이페이지"는 현재 활성 상태
+
+---
+
+## 배너 슬라이더 구조
+```html
+<!-- 슬라이더 이미지 -->
+<link href="https://www.foodcare-cle.com/event/eventDetail/623">
+  <image alt="M_마이페이지 메인 상시배너">
+</link>
+
+<link href="https://www.foodcare-cle.com/shop/goodsView/0000010966">
+  <image alt="M_마이페이지 메인 상시배너">
+</link>
+
+<!-- 슬라이드 컨트롤 버튼 -->
+<button>Go to slide 1</button>
+<button>Go to slide 2</button>
+```
+
+**특징:**
+- 2개 슬라이드 항목
+- 이벤트 및 상품 프로모션
+- 자동 또는 수동 재생 가능
+
+---
+
+## 컴포넌트 마크업 패턴
+
+### 1. 사용자 정보 카드
+```html
+<region>
+  <image alt="FRIENDS">
+  <generic>FRIENDS</generic>
+  <generic>우희선</generic>
+  <generic>추천코드</generic>
+  <generic>1dgy6w6m</generic>
+</region>
+```
+
+---
+
+### 2. 혜택 표시 패턴
+```html
+<link href="/mypage/coupon">
+  <generic>0</generic>
+</link>
+<generic>쿠폰</generic>
+
+<link href="/mypage/mileage">
+  <generic>0</generic>
+</link>
+<generic>적립금</generic>
+```
+
+---
+
+### 3. 탭 네비게이션
+```html
+<navigation>
+  <generic>정기식단</generic>
+  <generic>간식/유아용품</generic>
+</navigation>
+
+<list>
+  <listitem><generic>진행예정</generic></listitem>
+  <listitem><generic>진행중</generic></listitem>
+  <listitem><generic>시작일 미정</generic></listitem>
+  <listitem><generic>배송중단</generic></listitem>
+</list>
+```
+
+---
+
+### 4. 메뉴 그룹
+```html
+<generic>나의 주문 관리</generic>
+<link href="/mypage/manageSchedule">스케줄 관리</link>
+<link href="/mypage/orderHistory">주문 배송 조회</link>
+<link href="/mypage/returnHistory">취소/교환/반품 조회</link>
+
+<generic>나의 혜택 관리</generic>
+<link href="/mypage/coupon">쿠폰</link>
+<link href="/mypage/mileage">적립금</link>
+<link href="/mypage/deposit">예치금</link>
+```
+
+---
+
+## 로그인/회원가입과의 비교
+
+### 공통점
+
+| 항목 | 로그인 | 회원가입 | 마이페이지 |
+|------|--------|---------|-----------|
+| 헤더 | ✅ | ✅ | ✅ |
+| 뒤로가기 | ✅ | ✅ | ✅ |
+| 검색 | ✅ | ✅ | ✅ |
+| 장바구니 | ✅ | ✅ | ✅ |
+| 메뉴 토글 | ✅ | ✅ | ✅ |
+| 하단 네비게이션 | ✅ | ✅ | ✅ |
+| 푸터 | ✅ | ✅ | ✅ |
+
+### 차이점
+
+| 항목 | 로그인 | 회원가입 | 마이페이지 |
+|------|--------|---------|-----------|
+| **메인 콘텐츠** | 로그인 폼 | 가입 옵션 | 대시보드 |
+| **사용자 정보** | 없음 | 없음 | 이름, 레벨, 추천코드 |
+| **상단 네비** | 로그아웃 | 없음 | 사용자명, 로그아웃 |
+| **진행현황** | 없음 | 없음 | 구독/주문 현황 |
+| **메뉴 그룹** | 없음 | 없음 | 4개 섹션으로 구성 |
+| **복잡도** | 낮음 | 낮음 | **높음** |
+| **기능성** | 인증 | 가입 | 관리 및 조회 |
+
+---
+
+## 마이페이지 플로우
+```
+마이페이지 (/mypage/)
+│
+├── 사용자 프로필 영역
+│   ├── 레벨: FRIENDS
+│   ├── 추천코드: 1dgy6w6m
+│   ├── 쿠폰: 0
+│   ├── 적립금: 0
+│   └── 예치금: 0
+│
+├── 배너 슬라이더
+│   ├── 이벤트 배너
+│   └── 상품 배너
+│
+├── 진행현황 섹션
+│   ├── 정기식단
+│   │   ├── 진행예정
+│   │   ├── 진행중
+│   │   ├── 시작일 미정
+│   │   └── 배송중단
+│   └── 간식/유아용품
+│       ├── 입금예정
+│       ├── 입금확인
+│       ├── 배송준비중
+│       ├── 배송중
+│       └── 배송완료
+│
+└── 메뉴 네비게이션 (4개 그룹)
+    ├── 나의 주문 관리
+    ├── 나의 혜택 관리
+    ├── 나의 커뮤니티
+    └── 나의 정보 관리
+```
+
+---
+
+## 추천 마크업 개선 방안
+
+### 현재 구조 분석
+
+✅ **좋은 점:**
+- 의미론적 요소 사용 (`<article>`, `<region>`)
+- 명확한 섹션 분리
+- 계층적 메뉴 구조
+- 탭 네비게이션
+
+⚠️ **개선 가능 점:**
+```html
+<!-- ❌ 현재: 일반 generic으로 섹션 타이틀 -->
+<generic>나의 주문 관리</generic>
+
+<!-- ✅ 권장: heading 태그 사용 -->
+<h3>나의 주문 관리</h3>
+
+<!-- ❌ 현재: 숫자를 generic으로 표시 -->
+<generic>0</generic>
+
+<!-- ✅ 권장: 의미론적 태그 또는 숨겨진 텍스트 -->
+<span aria-label="쿠폰 0개">0</span>
+```
+
+---
+
+## HTML 구조 체크리스트
+
+마이페이지 구현 시 확인 사항:
+
+- [x] `<article>` + `<region>` 로 메인 콘텐츠 감싸기
+- [x] 사용자 프로필 영역 포함
+- [x] 프로필 카드에 레벨, 이름, 추천코드 표시
+- [x] 혜택 정보 (쿠폰, 적립금, 예치금) 표시
+- [x] 진행현황 섹션 (2개 탭)
+- [x] 배너 슬라이더 포함
+- [x] 4개 메뉴 그룹 구성
+- [x] 상단 네비게이션에 로그아웃 포함
+- [x] 하단 네비게이션 (5개 항목)
+- [x] 푸터는 `<footer>` 태그로
+- [x] 헤더는 `<banner>` 태그로
+- [x] 모든 링크 href 정확성 확인
+
+---
+
+## 주요 URL 모음
+
+### 주문/배송 관련
+
+| 항목 | URL |
+|------|-----|
+| 마이페이지 | `/mypage/` |
+| 스케줄 관리 | `/mypage/manageSchedule` |
+| 주문 배송 조회 | `/mypage/orderHistory` |
+| 취소/교환/반품 | `/mypage/returnHistory` |
+
+### 혜택 관련
+
+| 항목 | URL |
+|------|-----|
+| 쿠폰 | `/mypage/coupon` |
+| 적립금 | `/mypage/mileage` |
+| 예치금 | `/mypage/deposit` |
+| 등급혜택 | `/contents/benefitsGuide` |
+
+### 커뮤니티 관련
+
+| 항목 | URL |
+|------|-----|
+| 1:1 문의 | `/mypage/myInquiry` |
+| 상품 후기 | `/mypage/myGoodsReview/regular/N` |
+| 상품 문의 | `/mypage/myGoodsInquiry` |
+| 이벤트 참여 | `/mypage/eventParticipation` |
+| 카페 신상 알림 | `/mypage/myCafeNotification` |
+
+### 정보 관리 관련
+
+| 항목 | URL |
+|------|-----|
+| 회원정보 수정 | `/mypage/profile` |
+| 클레페이 관리 | `#` (비활성) |
+| 배송지 관리 | `/mypage/addressBook` |
+| 회원탈퇴 | `/mypage/secede` |
+
+### 로그인 관련
+
+| 항목 | URL |
+|------|-----|
+| 로그아웃 | `/member/logout` |
+
+---
+
+## 사용자 레벨 시스템
+
+### 현재 사용자 레벨
+
+| 정보 | 값 |
+|------|-----|
+| 레벨 | FRIENDS |
+| 사용자명 | 우희선 |
+| 추천코드 | 1dgy6w6m |
+
+### 레벨 특징
+
+- **FRIENDS**: 기본 회원 레벨
+- 이미지 아이콘으로 시각적 표시
+- 등급별 혜택 확인 가능
+
+---
+
+## 참고
+
+**페이지 URL:** `https://www.foodcare-cle.com/mypage/`
+**뷰포트:** 375px (모바일)
+**페이지 타입:** 로그인 후 개인 대시보드
+**주요 기능:** 주문 관리, 혜택 확인, 커뮤니티 참여, 정보 관리
+
+---
+
+## 추가 자료
+
+### 연락처 정보
+
+- **대표번호:** 1577-7003
+- **영업시간:** 평일 09:00 ~ 17:00 (점심 13:00~14:00)
+- **휴무:** 공휴일, 일요일
+- **이메일:** foodcare@foodcare-cle.com
+- **사업자번호:** 130-86-48124
+
+### 소셜 미디어 링크
+
+| SNS | URL |
+|-----|-----|
+| 블로그 | http://blog.naver.com/nature_food |
+| 인스타그램 | https://www.instagram.com/foodcare_cle/ |
+| 유튜브 | https://youtube.com/@user-my8eg1cw4n |
+| 스마트스토어 | https://smartstore.naver.com/eusik |
+
+---
+
+**문서 생성일:** 2025년 1월
+**사이트:** https://www.foodcare-cle.com/mypage/
+**담당자:** CRO 실험 팀
+**버전:** 1.0
