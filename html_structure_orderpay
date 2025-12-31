@@ -1,0 +1,562 @@
+# 푸드케어 클레 - 주문결제 페이지 HTML 구조
+
+## 페이지 개요
+- **URL**: https://www.foodcare-cle.com/shop/infoInput?cartIx=1394143
+- **페이지 타입**: 결제 정보 입력 및 주문 완료 페이지
+- **주요 기능**: 배송 정보 입력, 상품 확인, 할인/혜택 적용, 결제 수단 선택, 약관 동의
+
+---
+
+## 주요 섹션 구조
+
+### 1. 상단 Header
+```html
+<banner>
+  - 뒤로가기 버튼 (ref_150)
+  - 홈 링크 (ref_152)
+  - 제목: "주문결제" (ref_153)
+  - 검색 버튼
+    - 검색 입력창 (ref_155)
+    - 검색 제출 버튼 (ref_156)
+  - 최근 검색어 / 추천 검색어 리스트
+</banner>
+```
+
+---
+
+### 2. 메인 콘텐츠 (article > region)
+
+#### 2.1 배송정보 섹션
+```html
+<section class="shipping-info">
+  <heading>배송정보</heading>
+  
+  <!-- 배송지 선택 -->
+  <fieldset>
+    <legend>배송지 선택</legend>
+    <radio-group>
+      <label>
+        <input type="radio" value="0" checked>
+        <span>우희선</span>
+        <span>(기본 배송지)</span>
+      </label>
+      <div>
+        <address>서울 마포구 성미산로5안길 15 (성산동, 온음 공동체주택)</address>
+        <span>301호</span>
+        <span>010-4162-1557</span>
+      </div>
+    </radio-group>
+  </fieldset>
+
+  <!-- 배송 방식 선택 -->
+  <fieldset>
+    <legend>
+      배송 방식
+      <button type="button">배송방식 안내 (물음표 아이콘)</button>
+    </legend>
+    <radio-group>
+      <label>
+        <input type="radio" name="delivery_type" value="cle" checked>
+        <span>클레배송</span>
+      </label>
+      <p>푸드케어 배송 기사님이 매일 오후에서 아침 사이 신선하고 안전하게 문 앞으로 직접 배송 합니다.</p>
+      
+      <label>
+        <input type="radio" name="delivery_type" value="normal">
+        <span>일반배송</span>
+      </label>
+      <p>안전하게 포장된 제품이 안심 택배 서비스를 통해 다음날 집 앞으로 배송됩니다.</p>
+    </radio-group>
+  </fieldset>
+
+  <!-- 배송 요청사항 -->
+  <fieldset>
+    <legend>배송 요청사항</legend>
+    <select id="delivery_request_type">
+      <option>배송 요청사항 선택</option>
+      <option>문 앞에 놓아주세요.</option>
+      <option>배송 전에 미리 연락 바랍니다.</option>
+      <option>부재 시 경비실에 맡겨주세요.</option>
+      <option>부재 시 전화주시거나 문자 남겨 주세요.</option>
+      <option>직접입력</option>
+    </select>
+    <input type="text" placeholder="예)#101#1000 호출(최대 50자)">
+  </fieldset>
+
+  <!-- 공동현관 출입방법 -->
+  <fieldset>
+    <legend>공동현관 출입방법</legend>
+    <select id="door_access_method">
+      <option>비밀번호</option>
+      <option>자유출입 가능</option>
+    </select>
+    <input type="text" placeholder="예)#101#1000 호출(최대 50자)">
+  </fieldset>
+
+  <!-- 배송지 정보 저장 -->
+  <label>
+    <input type="checkbox" name="save_address">
+    <span>내 배송지 정보에 저장</span>
+  </label>
+
+  <!-- 배송완료 메시지 시간 선택 -->
+  <fieldset>
+    <legend>배송완료 메시지 전송</legend>
+    <radio-group>
+      <label>
+        <input type="radio" name="delivery_message_time" value="immediate" checked>
+        <span>배송직후</span>
+      </label>
+      <label>
+        <input type="radio" name="delivery_message_time" value="morning">
+        <span>아침 7시 이후</span>
+      </label>
+    </radio-group>
+  </fieldset>
+</section>
+```
+
+#### 2.2 주문상품 섹션
+```html
+<section class="order-products">
+  <heading>주문상품 (1건)</heading>
+  
+  <div class="product-category">
+    <span class="category-label">정기식단</span>
+  </div>
+
+  <ul class="product-list">
+    <li class="product-item">
+      <a href="/shop/mealPlan/E/102">
+        <span class="product-name">초기1</span>
+        <span class="product-variant">14세트 (2주) / 매일</span>
+        <span class="delivery-type">클레배송</span>
+        <span class="start-date-label">식단 시작일:</span>
+        <span class="start-date">2026.01.02 (금)</span>
+        <span class="price">64,400</span>
+        <span class="quantity">수량 1개</span>
+      </a>
+    </li>
+    
+    <li class="gift-item">
+      <span class="gift-label">보냉가방 증정!</span>
+      <span class="gift-desc">신선한 이유식을 만나기 위한 준비물</span>
+      <span class="gift-condition">클레배송 첫 주문시 증정!</span>
+    </li>
+  </ul>
+</section>
+```
+
+#### 2.3 할인/혜택 섹션
+```html
+<section class="discount-benefit">
+  <heading>할인/혜택</heading>
+
+  <!-- 쿠폰 -->
+  <fieldset>
+    <legend>쿠폰</legend>
+    <span>사용가능</span>
+    <input type="text" value="0" readonly>
+    <span>장</span>
+    <span>원</span>
+    <button type="button">쿠폰변경</button>
+  </fieldset>
+
+  <!-- 적립금 -->
+  <fieldset>
+    <legend>적립금</legend>
+    <span>보유</span>
+    <input type="text" value="0" readonly>
+    <span>원</span>
+    <span>원</span>
+    <button type="button">전액사용</button>
+    <p class="info-text">최소 3,000원부터 사용 가능</p>
+  </fieldset>
+
+  <!-- 예치금 -->
+  <fieldset>
+    <legend>예치금</legend>
+    <span>보유</span>
+    <input type="text" value="0" readonly>
+    <span>원</span>
+    <span>원</span>
+    <button type="button">전액사용</button>
+  </fieldset>
+
+  <p class="warning-text">*배송비는 적립금과 예치금 사용이 불가합니다.</p>
+</section>
+```
+
+#### 2.4 결제정보 섹션
+```html
+<section class="payment-info">
+  <heading>결제정보</heading>
+
+  <div class="price-breakdown">
+    <div class="price-row">
+      <span class="label">총 상품금액</span>
+      <span class="value">64,400원</span>
+    </div>
+    
+    <div class="price-row">
+      <span class="label">총 할인금액</span>
+      <span class="value">0원</span>
+    </div>
+    <div class="price-detail">
+      <span>쿠폰할인</span>
+      <span>0원</span>
+    </div>
+    <div class="price-detail">
+      <span>적립금</span>
+      <span>0원</span>
+    </div>
+    <div class="price-detail">
+      <span>예치금</span>
+      <span>0원</span>
+    </div>
+    
+    <div class="price-row">
+      <span class="label">총 배송비</span>
+      <span class="value">0원</span>
+    </div>
+    <div class="price-detail">
+      <span>배송비할인</span>
+      <span>0원</span>
+    </div>
+    
+    <div class="price-row highlight">
+      <span class="label">총 결제금액</span>
+      <span class="value">64,400원</span>
+    </div>
+
+    <div class="earning-info">
+      <span class="label">적립금</span>
+      <span class="value">644원</span>
+      <span>적립 예정</span>
+    </div>
+  </div>
+
+  <!-- 이벤트 배너 -->
+  <a href="https://www.foodcare-cle.com/event/eventDetail/623">
+    <img src="M_주문결제 상시배너" alt="배너">
+  </a>
+</section>
+```
+
+#### 2.5 결제수단 섹션
+```html
+<section class="payment-method">
+  <heading>결제수단</heading>
+
+  <!-- 클레페이 -->
+  <fieldset>
+    <legend>클레페이 결제</legend>
+    <label>
+      <input type="radio" name="payment_method" value="clepay">
+      <span>클레페이 결제</span>
+    </label>
+    <button type="button">설정</button>
+    <p>클레페이를 추가하고 손쉽게 결제하세요!</p>
+    
+    <fieldset>
+      <legend>결제 비밀번호 생략하기</legend>
+      <label>
+        <input type="checkbox">
+        <span>결제 비밀번호 생략하기</span>
+      </label>
+      <p>5만원 이상 결제시 비밀번호 입력 필요</p>
+    </fieldset>
+
+    <button type="button">무이자할부 안내</button>
+  </fieldset>
+
+  <!-- 일반결제 -->
+  <fieldset>
+    <legend>일반결제</legend>
+    <label>
+      <input type="radio" name="payment_method" value="main">
+      <span>일반결제</span>
+    </label>
+
+    <!-- 일반결제 상세 옵션 -->
+    <fieldset>
+      <legend>결제 수단 선택</legend>
+      <ul>
+        <li>
+          <label>
+            <input type="radio" name="main_payment_type" value="credit_card">
+            <span>신용카드 결제</span>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="radio" name="main_payment_type" value="bank_transfer">
+            <span>실시간 계좌이체</span>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="radio" name="main_payment_type" value="virtual_account">
+            <span>가상계좌 결제</span>
+          </label>
+          
+          <div class="virtual-account-info">
+            <p>입금기간까지 주문금액을 입금하셔야 주문이 완료됩니다.</p>
+            
+            <fieldset>
+              <legend>입금은행</legend>
+              <select id="bank_select">
+                <option selected>국민은행 (620201-04-016352)</option>
+                <option>신한은행 (100-026-186894)</option>
+                <option>우리은행 (1005-501-664996)</option>
+                <option>농협 (351-0203-6356-33)</option>
+              </select>
+            </fieldset>
+
+            <fieldset>
+              <legend>입금기한</legend>
+              <span>2026년 01월 01일 23:59:59</span>
+            </fieldset>
+          </div>
+        </li>
+      </ul>
+    </fieldset>
+  </fieldset>
+
+  <!-- 간편결제 -->
+  <fieldset>
+    <legend>간편결제</legend>
+    <label>
+      <input type="radio" name="payment_method" value="simple">
+      <span>간편결제</span>
+    </label>
+
+    <ul class="simple-payment-list">
+      <li>
+        <label>
+          <input type="radio" name="simple_payment_type" value="kakao">
+          <span>카카오페이</span>
+        </label>
+      </li>
+      <li>
+        <label>
+          <input type="radio" name="simple_payment_type" value="naver">
+          <span>네이버페이</span>
+        </label>
+      </li>
+      <li>
+        <label>
+          <input type="radio" name="simple_payment_type" value="samsung">
+          <span>삼성페이</span>
+        </label>
+      </li>
+      <li>
+        <label>
+          <input type="radio" name="simple_payment_type" value="payco">
+          <span>페이코</span>
+        </label>
+      </li>
+      <li>
+        <label>
+          <input type="radio" name="simple_payment_type" value="lpay">
+          <span>엘페이</span>
+        </label>
+      </li>
+    </ul>
+
+    <div class="payment-notes">
+      <p>・ 네이버페이는 네이버ID로 신용카드 또는 은행계좌 정보를 등록하여 결제할 수 있는 간편결제 서비스입니다.</p>
+      <p>・ 주문 변경 시 카드사 혜택 및 할부 적용 여부는 해당 카드사 정책에 따라 변경될 수 있습니다.</p>
+      <p>・ 지원 가능 결제수단 : 네이버페이 결제창 내 노출되는 모든 카드/계좌</p>
+    </div>
+  </fieldset>
+
+  <!-- 다음 결제에도 사용 -->
+  <label>
+    <input type="checkbox" name="use_same_method_next">
+    <span>선택한 결제수단 다음에도 사용</span>
+  </label>
+</section>
+```
+
+#### 2.6 약관동의 섹션
+```html
+<section class="terms-agreement">
+  <heading>약관동의</heading>
+
+  <ul>
+    <li>
+      <label>
+        <input type="checkbox" name="terms_agree" required>
+        <span>위 내용을 확인했으며, 결제에 동의합니다.</span>
+      </label>
+    </li>
+  </ul>
+
+  <button class="checkout-button" type="button">
+    <span>결제하기</span>
+    <span class="final-price">64,400원</span>
+  </button>
+</section>
+```
+
+#### 2.7 약관 전체보기 섹션
+```html
+<section class="full-terms">
+  <h2>약관 전체보기</h2>
+
+  <div class="terms-content">
+    <h3>개인정보 수집 및 이용</h3>
+    <p>[약관 내용...]</p>
+
+    <h3>개인정보처리 위탁</h3>
+    <p>[약관 내용...]</p>
+
+    <h3>개인정보 제3자 제공</h3>
+    <p>[약관 내용...]</p>
+  </div>
+</section>
+```
+
+---
+
+## 3. 네비게이션 & Footer 구조
+
+### 3.1 하단 네비게이션
+```html
+<nav>
+  <a href="#navigation">전체메뉴</a>
+  <a href="/">홈</a>
+  <button type="button">식단주문</button>
+  <a href="/mypage/manageSchedule">스케줄관리</a>
+  <a href="/mypage/">마이페이지</a>
+</nav>
+```
+
+### 3.2 Footer
+```html
+<footer>
+  <div class="footer-content">
+    <p>대표번호 1577-7003</p>
+    <p>평일 09:00 ~ 17:00 (점심 13:00~14:00) 공휴일, 일요일 휴무</p>
+  </div>
+  
+  <ul class="footer-links">
+    <li><a href="/customer">고객센터</a></li>
+    <li><a href="/customer/notice">공지사항</a></li>
+    <li><a href="/customer/faq">자주 묻는 질문</a></li>
+  </ul>
+</footer>
+```
+
+---
+
+## 4. JavaScript 데이터 구조
+```javascript
+// 기본 배송지 정보
+const devRegularDefaultAddress = [{
+  crmp_idx: "887821",
+  shipping_name: "기본 배송지",
+  recipient: "우희선",
+  zipcode: "03969",
+  address1: "서울 마포구 성미산로5안길 15 (성산동, 온음 공동체주택)",
+  address2: "301호",
+  is_cle: "Y",
+  delivery_type: "cle",
+  mobile: "010-4162-1557",
+  delivery_default_yn: "Y",
+  isBasic: "1",
+  tel: "",
+  ix: "568241",
+  index: "0",
+  message: "",
+  door_msg: ""
+}];
+
+// 장바구니 항목 정보
+const beginCheckoutList = [{
+  item_id: '0000000102',
+  item_name: '초기1',
+  item_brand: 'Foodcare',
+  item_variant: '14세트 (2주)',
+  item_category: '이유식',
+  price: '64400',
+  quantity: 1,
+  discount: '0'
+}];
+```
+
+---
+
+## 5. 주요 CSS 클래스 & DOM 요소 참조
+
+| 요소 | 참조 ID | 역할 |
+|------|--------|------|
+| 뒤로가기 | ref_150 | 이전 페이지로 이동 |
+| 홈 링크 | ref_152 | 메인 페이지로 이동 |
+| 배송방식 라디오 (클레배송) | ref_238 | 배송 방식 선택 |
+| 배송방식 라디오 (일반배송) | ref_241 | 배송 방식 선택 |
+| 배송 요청사항 선택 | ref_244 | 배송 특별 요청 사항 선택 |
+| 공동현관 방법 선택 | ref_253 | 공동 현관 접근 방법 선택 |
+| 배송지 저장 체크박스 | ref_258 | 배송지 정보 저장 여부 |
+| 배송완료 메시지 (즉시) | ref_262 | 배송완료 메시지 시간 선택 |
+| 배송완료 메시지 (아침 7시) | ref_265 | 배송완료 메시지 시간 선택 |
+| 쿠폰 입력창 | ref_289 | 쿠폰 금액 입력 |
+| 쿠폰변경 버튼 | ref_291 | 쿠폰 변경 |
+| 적립금 입력창 | ref_294 | 적립금 사용 금액 |
+| 적립금 전액사용 | ref_296 | 적립금 전액 사용 |
+| 예치금 입력창 | ref_300 | 예치금 사용 금액 |
+| 예치금 전액사용 | ref_302 | 예치금 전액 사용 |
+| 클레페이 결제 라디오 | ref_327 | 결제 수단 선택 |
+| 클레페이 설정 버튼 | ref_329 | 클레페이 설정 |
+| 비밀번호 생략 체크박스 | ref_334 | 결제 비밀번호 생략 여부 |
+| 일반결제 라디오 | ref_337 | 결제 수단 선택 |
+| 신용카드 결제 라디오 | ref_342 | 일반 결제 수단 선택 |
+| 계좌이체 라디오 | ref_346 | 일반 결제 수단 선택 |
+| 가상계좌 라디오 | ref_350 | 일반 결제 수단 선택 |
+| 입금은행 선택 | ref_354 | 가상 계좌 은행 선택 |
+| 간편결제 라디오 | ref_362 | 결제 수단 선택 |
+| 카카오페이 라디오 | ref_367 | 간편 결제 수단 선택 |
+| 네이버페이 라디오 | ref_371 | 간편 결제 수단 선택 |
+| 삼성페이 라디오 | ref_375 | 간편 결제 수단 선택 |
+| 페이코 라디오 | ref_379 | 간편 결제 수단 선택 |
+| 엘페이 라디오 | ref_383 | 간편 결제 수단 선택 |
+| 결제수단 저장 체크박스 | ref_389 | 다음 결제에도 사용 |
+| 약관동의 체크박스 | ref_397 | 결제 약관 동의 |
+| 결제하기 버튼 | ref_399 | 결제 완료 |
+
+---
+
+## 6. CRO 실험 주요 타겟 요소
+
+### 6.1 클릭 유도율 최적화 (CTA)
+- 결제하기 버튼 (ref_399) - 색상, 텍스트, 크기, 위치 변경
+- 쿠폰변경 버튼 (ref_291)
+- 전액사용 버튼 (적립금, 예치금)
+
+### 6.2 폼 최적화
+- 배송방식 라디오 버튼
+- 결제수단 선택 항목
+- 배송 요청사항 드롭다운
+
+### 6.3 시각적 요소 최적화
+- 가격 정보 섹션 (결제정보 heading)
+- 상품 정보 표시
+- 배송비 정보
+
+### 6.4 신뢰도 최적화
+- 약관동의 섹션 위치 및 텍스트
+- 배송정보 표시
+- 할인/혜택 정보
+
+---
+
+이 MD 문서를 기반으로 AI agent가 다음을 수행할 수 있습니다:
+
+1. **정확한 요소 선택**: DOM 구조를 이해하여 올바른 요소 타겟팅
+2. **배치 변경**: 섹션 순서 변경, 버튼 위치 조정
+3. **텍스트 변형**: CTA 카피 변경, 설명 텍스트 수정
+4. **스타일 변경**: 색상, 크기, 폰트 등 CSS 수정
+5. **상호작용 로직**: 조건부 표시/숨김, 필드 자동 채우기 등
+
+필요하시면 특정 섹션에 대해 더 상세한 내용도 추가해드릴 수 있습니다!
