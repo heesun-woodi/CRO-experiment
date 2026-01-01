@@ -1,0 +1,614 @@
+# 정기식단 주문 레이어 (Modal) - 상세 HTML 구조
+
+## 모달 기본 정보
+- 모달명: 정기식단 주문 layer
+- 트리거: 하단 고정 메뉴의 "식단주문" 버튼 클릭
+- 타입: Overlay Modal (Full-height, Scrollable)
+- 닫기 버튼: "레이어 닫기버튼"
+
+---
+
+## 모달 전체 구조
+
+<contentinfo>
+└── <region>
+    ├── <textbox type="hidden" value="1"> (상태 추적용)
+    ├── <heading> "정기식단 주문 layer"
+    ├── <button type="button"> "레이어 닫기버튼"
+    ├── <banner> (모달 헤더)
+    ├── <list> (탭 네비게이션)
+    ├── <list> (이유식 상품 리스트)
+    ├── <list> (영양식 상품 리스트)
+    ├── <list> (키즈식 상품 리스트)
+    ├── <link> (BEST 상품)
+    ├── <link> (추천 상품)
+    ├── <button> (캐러셀 네비게이션)
+    └── <generic> (스크립트 요소)
+
+---
+
+## 1. 모달 헤더 (Header Banner)
+
+### 1.1 구조
+<banner>
+│   └── <generic> "식단주문"
+│       └── 모달 제목 표시
+│
+└── 우측에 닫기 버튼 배치
+    └── <button type="button"> "레이어 닫기버튼"
+
+### 1.2 상태 추적 필드
+<textbox type="hidden">
+└── value="1" (모달 활성 상태 추적)
+
+---
+
+## 2. 탭 네비게이션 (Tab Navigation)
+
+### 2.1 구조
+<list>
+├── <listitem> "이유식"
+│   └── 기본 활성 탭
+├── <listitem> "영양식"
+│   └── 클릭 시 영양식 상품 리스트 표시
+└── <listitem> "키즈식"
+    └── 클릭 시 키즈식 상품 리스트 표시
+
+### 2.2 탭 특성
+- 기본 활성 탭: "이유식" (초기 로드 시)
+- 탭 전환 방식: 클릭 시 해당 상품 리스트로 스크롤/표시
+- 인터랙션: 클릭 이벤트로 콘텐츠 변경
+
+---
+
+## 3. 이유식 상품 리스트 (Weaning Food Products)
+
+### 3.1 리스트 구조
+<list> (이유식 상품 리스트 - Carousel)
+├── <listitem> [1번 상품]
+├── <listitem> [2번 상품]
+├── <listitem> [3번 상품]
+├── <listitem> [4번 상품]
+├── <listitem> [5번 상품]
+├── <listitem> [6번 상품]
+├── <listitem> [7번 상품]
+└── <listitem> [8번 상품]
+
+### 3.2 개별 상품 아이템 구조
+<listitem>
+└── <link href="/shop/mealPlan/E/[아이디]">
+    ├── <generic> "상품명"
+    │   └── 예: "준비기", "초기1", "초기2", "중기", "후기1", "후기2"
+    ├── <generic> "월령 정보"
+    │   └── 예: "4개월", "4~5개월", "5~6개월", "7~8개월", "9~11개월", "12~14개월"
+    ├── <image> (상품 이미지 - 옵션)
+    │   └── src="[상품이미지경로]"
+    └── (클릭 시 상품 상세 페이지로 이동)
+
+### 3.3 이유식 상품 목록 (8개)
+
+1. 준비기
+   - 링크: /shop/mealPlan/E/101
+   - 월령: 4개월
+
+2. 초기 1
+   - 링크: /shop/mealPlan/E/102
+   - 월령: 4~5개월
+
+3. 초기 2
+   - 링크: /shop/mealPlan/E/103
+   - 월령: 5~6개월
+
+4. 중기
+   - 링크: /shop/mealPlan/E/104
+   - 월령: 7~8개월
+
+5. 후기1 (3식)
+   - 링크: /shop/mealPlan/E/105
+   - 월령: 9~11개월
+
+6. 후기2 (2식)
+   - 링크: /shop/mealPlan/E/107
+   - 월령: 9~11개월
+
+7. 후기2 (다른 버전 가능)
+   - 링크: /shop/mealPlan/E/107
+   - 월령: 9~11개월
+
+8. 후기무른밥
+   - 링크: /shop/mealPlan/E/108
+   - 월령: 12~14개월
+
+9. Two Step (패키지)
+   - 링크: /shop/mealPlan/S/401
+   - 설명: 패키지 상품
+
+---
+
+## 4. 영양식 상품 리스트 (Nutrition Food Products)
+
+### 4.1 리스트 구조
+<list> (영양식 상품 리스트 - Carousel)
+├── <listitem> [1번 상품]
+├── <listitem> [2번 상품]
+├── <listitem> [3번 상품]
+├── ... (총 8개)
+└── <listitem> [8번 상품]
+
+### 4.2 영양식 상품 목록 (8개)
+
+1. 영양밥
+   - 링크: /shop/mealPlan/U/201
+   - 월령: 15개월~
+
+2. 영양국
+   - 링크: /shop/mealPlan/U/202
+   - 월령: 15개월~
+
+3. 영양찬
+   - 링크: /shop/mealPlan/U/203
+   - 월령: 15개월~
+
+4. 영양밥국찬 (3식)
+   - 링크: /shop/mealPlan/U/204
+   - 월령: 15개월~
+   - 구성: 3식
+
+5. 영양밥국찬 (2식)
+   - 링크: /shop/mealPlan/U/205
+   - 월령: 15개월~
+   - 구성: 2식
+
+6. 영양밥국 (3식)
+   - 링크: /shop/mealPlan/U/206
+   - 월령: 15개월~
+
+7. 영양밥국 (2식)
+   - 링크: /shop/mealPlan/U/207
+   - 월령: 15개월~
+
+8. 영양밥찬 (3식)
+   - 링크: /shop/mealPlan/U/208
+   - 월령: 15개월~
+
+### 4.3 개별 상품 아이템 구조
+<listitem>
+└── <link href="/shop/mealPlan/U/[아이디]">
+    ├── <generic> "상품명"
+    │   └── 예: "영양밥", "영양국", "영양찬", "영양밥국찬" 등
+    ├── <generic> "월령 정보"
+    │   └── 15개월~ (모두 동일)
+    ├── <generic> "구성 정보" (필요 시)
+    │   └── "3식" 또는 "2식"
+    ├── <image> (상품 이미지 - 옵션)
+    └── (클릭 시 상품 상세 페이지로 이동)
+
+---
+
+## 5. 키즈식 상품 리스트 (Kids Food Products)
+
+### 5.1 리스트 구조
+<list> (키즈식 상품 리스트)
+├── <listitem>
+├── <listitem>
+├── <listitem>
+└── <listitem>
+
+### 5.2 키즈식 상품 목록
+
+1. 한우 솥밥 3종
+   - 링크: /shop/goodsList/004002000000000
+   - 카테고리: 클레KIDS
+
+2. 심쿵부먹
+   - 링크: /shop/goodsList/004004000000000
+   - 카테고리: 클레KIDS
+
+3. 칼마디 츄어블
+   - 링크: /shop/goodsList/004003000000000
+   - 카테고리: 클레KIDS
+
+4. (추가 상품)
+   - 필요 시 확장 가능
+
+---
+
+## 6. BEST 상품 섹션 (Best Products)
+
+### 6.1 구조
+<region>
+├── <heading> "BEST" (또는 "추천 상품")
+│
+└── <list> (BEST 상품 캐러셀)
+    ├── <listitem>
+    │   └── <link href="...">
+    │       ├── <image> "BEST 힘쑥세트"
+    │       └── <generic> 상품 제목
+    │
+    ├── <listitem>
+    │   └── <link href="...">
+    │       ├── <image> "그릭요거트"
+    │       └── <generic> 상품 제목
+    │
+    ├── <listitem>
+    │   └── <link href="...">
+    │       ├── <image> "BEST 힘쑥세트"
+    │       └── <generic> 상품 제목
+    │
+    └── ... (3개 이상 아이템)
+
+### 6.2 BEST 상품 목록
+
+1. BEST 힘쑥세트
+   - 링크: /shop/goodsView/0000010945
+   - 타입: BEST 상품
+   - 이미지: "BEST 힘쑥세트" 썸네일
+
+2. 그릭요거트
+   - 링크: /shop/goodsView/0000010676
+   - 타입: 추천 상품
+   - 이미지: "그릭요거트" 썸네일
+
+3. BEST 힘쑥세트 (반복)
+   - 링크: /shop/goodsView/0000010945
+   - 캐러셀 반복 표시
+
+4. 그릭요거트 (반복)
+   - 링크: /shop/goodsView/0000010676
+   - 캐러셀 반복 표시
+
+### 6.3 캐러셀 네비게이션
+<button> "Go to slide 1" 
+<button> "Go to slide 2"
+
+→ 사용자가 슬라이드 버튼 클릭 시 해당 슬라이드로 이동
+
+---
+
+## 7. 영양부스터 상품 섹션 (Nutrition Booster)
+
+### 7.1 구조
+<region>
+├── <heading> "영양부스터" (또는 카테고리명)
+│
+└── <list> (영양부스터 상품 캐러셀)
+    ├── <listitem>
+    │   └── <link href="/shop/goodsView/0000011203">
+    │       ├── <image> "영양부스터"
+    │       └── <generic> 상품 제목
+    │
+    ├── <listitem>
+    │   └── <link href="/shop/goodsView/0000010926">
+    │       ├── <image> "영양부스터"
+    │       └── <generic> 상품 제목
+    │
+    ├── <listitem>
+    │   └── <link href="/shop/goodsView/0000011140">
+    │       ├── <image> "영양부스터"
+    │       └── <generic> 상품 제목
+    │
+    └── ... (3개 반복 표시)
+
+### 7.2 영양부스터 상품 목록
+
+1. 영양부스터 (상품 1)
+   - 링크: /shop/goodsView/0000011203
+   - 이미지: "영양부스터"
+
+2. 영양부스터 (상품 2)
+   - 링크: /shop/goodsView/0000010926
+   - 이미지: "영양부스터"
+
+3. 영양부스터 (상품 3)
+   - 링크: /shop/goodsView/0000011140
+   - 이미지: "영양부스터"
+
+4. (캐러셀 반복)
+   - 위의 3개 상품이 반복 표시됨
+
+### 7.3 캐러셀 네비게이션
+<button> "Go to slide 1"
+<button> "Go to slide 2"
+<button> "Go to slide 3"
+
+→ 3개 슬라이드 네비게이션
+
+---
+
+## 8. 추가 추천 상품 섹션 (Additional Products)
+
+### 8.1 구조
+<region>
+└── <list>
+    ├── <listitem>
+    │   └── <link href="/shop/goodsView/0000010981">
+    │       ├── <image> "비타핑거팝"
+    │       └── <generic> 상품 제목
+    │
+    ├── <listitem>
+    │   └── <link href="/shop/goodsList/004002000000000">
+    │       ├── <image> "한우솥밥"
+    │       └── <generic> 상품 제목
+    │
+    ├── <listitem>
+    │   └── <link href="/shop/goodsView/0000011140">
+    │       ├── <image> "영양부스터"
+    │       └── <generic> 상품 제목
+    │
+    ├── <listitem>
+    │   └── <link href="/shop/goodsView/0000011203">
+    │       ├── <image> "영양부스터"
+    │       └── <generic> 상품 제목
+    │
+    ├── <listitem>
+    │   └── <link href="/shop/goodsView/0000010926">
+    │       ├── <image> "영양부스터"
+    │       └── <generic> 상품 제목
+    │
+    ├── <listitem>
+    │   └── <link href="/shop/goodsView/0000010977">
+    │       ├── <image> "엘더베리주스"
+    │       └── <generic> 상품 제목
+    │
+    ├── <listitem>
+    │   └── <link href="/shop/goodsView/0000010859">
+    │       ├── <image> "배도라지즙"
+    │       └── <generic> 상품 제목
+    │
+    └── <listitem>
+        └── <link href="/shop/goodsView/0000012068">
+            ├── <image> "칼마디 츄어블"
+            └── <generic> 상품 제목
+
+### 8.2 추천 상품 목록
+
+1. 비타핑거팝
+   - 링크: /shop/goodsView/0000010981
+   - 설명: 소근육 운동용 퍼핑과자
+
+2. 한우솥밥
+   - 링크: /shop/goodsList/004002000000000
+   - 설명: 클레KIDS 카테고리
+
+3. 영양부스터 (3개)
+   - 링크: 0000011140, 0000011203, 0000010926
+   - 설명: 영양강화 상품
+
+4. 엘더베리주스
+   - 링크: /shop/goodsView/0000010977
+   - 설명: 면역력 강화
+
+5. 배도라지즙
+   - 링크: /shop/goodsView/0000010859
+   - 설명: 기관지 건강
+
+6. 칼마디 츄어블
+   - 링크: /shop/goodsView/0000012068
+   - 설명: 뼈&치아 형성 영양소
+
+---
+
+## 9. 캐러셀 네비게이션 버튼 (Navigation Controls)
+
+### 9.1 네비게이션 버튼 구조
+<button> "Go to slide 1" → 1번 슬라이드로 이동
+<button> "Go to slide 2" → 2번 슬라이드로 이동
+<button> "Go to slide 3" → 3번 슬라이드로 이동
+<button> "Go to slide 4" → 4번 슬라이드로 이동 (필요 시)
+
+### 9.2 네비게이션 특성
+- 위치: 각 캐러셀 영역 하단
+- 동작: 클릭 시 해당 슬라이드로 즉시 이동
+- 스타일: 점(dot) 형태로 표시되는 것이 일반적
+- 개수: 캐러셀 항목 수에 따라 가변
+
+---
+
+## 10. 모달 전체 계층 구조 (Full Hierarchy)
+
+<contentinfo> (푸터 영역이지만 모달 컨테이너로 사용)
+└── <region>
+    │
+    ├── [상태 추적]
+    │   └── <textbox type="hidden" value="1">
+    │
+    ├── [모달 헤더]
+    │   ├── <heading> "정기식단 주문 layer"
+    │   ├── <button> "레이어 닫기버튼"
+    │   └── <banner>
+    │       └── <generic> "식단주문"
+    │
+    ├── [탭 네비게이션]
+    │   └── <list>
+    │       ├── <listitem> "이유식" (활성)
+    │       ├── <listitem> "영양식"
+    │       └── <listitem> "키즈식"
+    │
+    ├── [이유식 상품 리스트 - 기본 표시]
+    │   └── <list>
+    │       ├── <listitem> (준비기)
+    │       ├── <listitem> (초기1)
+    │       ├── <listitem> (초기2)
+    │       ├── <listitem> (중기)
+    │       ├── <listitem> (후기1)
+    │       ├── <listitem> (후기2)
+    │       ├── <listitem> (후기무른밥)
+    │       └── <listitem> (Two Step 패키지)
+    │
+    ├── [영양식 상품 리스트 - 탭 클릭 시 표시]
+    │   └── <list>
+    │       ├── <listitem> (영양밥)
+    │       ├── <listitem> (영양국)
+    │       ├── <listitem> (영양찬)
+    │       ├── <listitem> (영양밥국찬 3식)
+    │       ├── <listitem> (영양밥국찬 2식)
+    │       ├── <listitem> (영양밥국 3식)
+    │       ├── <listitem> (영양밥국 2식)
+    │       └── <listitem> (영양밥찬 3식)
+    │
+    ├── [키즈식 상품 리스트 - 탭 클릭 시 표시]
+    │   └── <list>
+    │       ├── <listitem> (한우 솥밥 3종)
+    │       ├── <listitem> (심쿵부먹)
+    │       ├── <listitem> (칼마디 츄어블)
+    │       └── (확장 가능)
+    │
+    ├── [BEST 상품 캐러셀]
+    │   ├── <list>
+    │   │   ├── <listitem> (BEST 힘쑥세트)
+    │   │   ├── <listitem> (그릭요거트)
+    │   │   └── ... (반복 표시)
+    │   └── <button> (캐러셀 네비게이션)
+    │       ├── "Go to slide 1"
+    │       └── "Go to slide 2"
+    │
+    ├── [영양부스터 캐러셀]
+    │   ├── <list>
+    │   │   ├── <listitem> (영양부스터 1)
+    │   │   ├── <listitem> (영양부스터 2)
+    │   │   ├── <listitem> (영양부스터 3)
+    │   │   └── ... (반복 표시)
+    │   └── <button> (캐러셀 네비게이션)
+    │       ├── "Go to slide 1"
+    │       ├── "Go to slide 2"
+    │       └── "Go to slide 3"
+    │
+    └── [추가 추천 상품]
+        └── <list>
+            ├── <listitem> (비타핑거팝)
+            ├── <listitem> (한우솥밥)
+            ├── <listitem> (영양부스터)
+            ├── <listitem> (엘더베리주스)
+            ├── <listitem> (배도라지즙)
+            └── <listitem> (칼마디 츄어블)
+
+---
+
+## 11. 모달 인터랙션 플로우
+
+### 11.1 탭 전환 플로우
+사용자 액션 → 탭 클릭 (예: "영양식" 탭)
+        ↓
+   탭 활성 상태 변경 (CSS class 변경)
+        ↓
+  해당 상품 리스트 표시/숨김 (display 변경)
+        ↓
+   스크롤 위치 조정 (필요 시)
+
+### 11.2 모달 열기/닫기
+사용자 액션 → "식단주문" 버튼 클릭
+        ↓
+    모달 오버레이 표시
+        ↓
+   정기식단 주문 layer 활성화 (z-index 상승)
+        ↓
+  모달 스크롤 활성화
+
+[닫기]
+사용자 액션 → "레이어 닫기버튼" 클릭 또는 배경 클릭
+        ↓
+    모달 오버레이 숨김
+        ↓
+   정기식단 주문 layer 비활성화
+
+### 11.3 캐러셀 네비게이션
+사용자 액션 → 슬라이드 버튼 클릭 (예: "Go to slide 2")
+        ↓
+  현재 슬라이드 인덱스 변경
+        ↓
+   해당 슬라이드 표시 (transform/scroll)
+        ↓
+  캐러셀 항목 변경 (이미지 및 텍스트)
+
+---
+
+## 12. 모달 CSS 상태 및 클래스
+
+### 12.1 주요 상태
+모달 활성 상태:
+- display: block (또는 visibility: visible)
+- opacity: 1
+- z-index: 높은 값 (예: 1000)
+
+탭 활성 상태:
+- background-color: 활성 색상
+- border-bottom: 밑줄 표시
+- color: 활성 텍스트 색상
+
+캐러셀 활성 슬라이드:
+- opacity: 1
+- z-index: 1
+- transform: translateX(0)
+
+### 12.2 반응형 디자인
+모바일 (375px):
+- 모달 너비: 100% (전체 화면)
+- 높이: 가변 (스크롤 가능)
+- 패딩: 조정됨
+
+태블릿/데스크톱:
+- 모달 너비: 제한됨 (예: 500px)
+- 중앙 정렬
+
+---
+
+## 13. 주요 링크 정리 (Quick Reference)
+
+카테고리 | 상품명 | 링크
+---------|--------|------
+이유식 | 준비기 | /shop/mealPlan/E/101
+이유식 | 초기1 | /shop/mealPlan/E/102
+이유식 | 초기2 | /shop/mealPlan/E/103
+이유식 | 중기 | /shop/mealPlan/E/104
+이유식 | 후기1 | /shop/mealPlan/E/105
+이유식 | 후기2 | /shop/mealPlan/E/107
+이유식 | 후기무른밥 | /shop/mealPlan/E/108
+패키지 | Two Step | /shop/mealPlan/S/401
+영양식 | 영양밥 | /shop/mealPlan/U/201
+영양식 | 영양국 | /shop/mealPlan/U/202
+영양식 | 영양찬 | /shop/mealPlan/U/203
+영양식 | 영양밥국찬 3식 | /shop/mealPlan/U/204
+영양식 | 영양밥국찬 2식 | /shop/mealPlan/U/205
+키즈식 | 한우솥밥 | /shop/goodsList/004002000000000
+BEST | 힘쑥세트 | /shop/goodsView/0000010945
+BEST | 그릭요거트 | /shop/goodsView/0000010676
+영양부스터 | 영양부스터 1 | /shop/goodsView/0000011203
+영양부스터 | 영양부스터 2 | /shop/goodsView/0000010926
+영양부스터 | 영양부스터 3 | /shop/goodsView/0000011140
+추가상품 | 비타핑거팝 | /shop/goodsView/0000010981
+추가상품 | 엘더베리주스 | /shop/goodsView/0000010977
+추가상품 | 배도라지즙 | /shop/goodsView/0000010859
+추가상품 | 칼마디 츄어블 | /shop/goodsView/0000012068
+
+---
+
+## 14. CRO 실험 최적화 포인트
+
+### 14.1 탭 네비게이션 개선
+- 탭 간 전환 속도 개선
+- 탭 활성 상태 시각화 강화
+- 탭 클릭 영역 확대
+
+### 14.2 상품 리스트 개선
+- 상품 카드 크기 조정
+- 이미지 로딩 최적화
+- 상품명 및 정보 가독성 개선
+
+### 14.3 캐러셀 개선
+- 네비게이션 버튼 위치 최적화
+- 슬라이드 전환 속도 조정
+- 자동 슬라이드 기능 추가/제거 테스트
+
+### 14.4 모달 UI/UX
+- 닫기 버튼 크기 및 위치 개선
+- 모달 배경(오버레이) 투명도 조정
+- 모달 열기/닫기 애니메이션 추가
+
+### 14.5 스크롤 성능
+- 가상 스크롤(Virtual Scroll) 적용
+- 이미지 레이지 로딩(Lazy Loading)
+- 캐러셀 성능 최적화
+
+---
+
+이 문서를 AI 코딩 에이전트와 공유하면, "정기식단 주문 레이어" 모달의 구조를 충분히 이해하고 CRO variant 구현이 가능합니다.
