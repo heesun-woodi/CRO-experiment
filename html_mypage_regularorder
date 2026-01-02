@@ -1,0 +1,164 @@
+<div class="mymain__section">
+        <h2 class="mymain__section__title">
+            <span class="title__text">진행현황</span>
+        </h2>
+
+        <div class="js__tab__wrapper">
+            <nav class="fb__common-tab">
+                <div class="fb__common-tab__section active js__tab__menu" data-tab-menu="meal">
+                    <span class="fb__common-tab__text">정기식단</span>
+                </div>
+                <div class="fb__common-tab__section js__tab__menu" data-tab-menu="goods">
+                    <span class="fb__common-tab__text">간식/유아용품</span>
+                </div>
+            </nav>
+    
+            <div class="fb__common-tab__contents">
+                <!-- 정기식단 진행현황 -->
+                <div class="mymain__section__content active" data-tab-content="meal">
+                    <!-- disabled 클래스 사용 (정기식단 없는 경우) -->
+                    <div class="mymain__meal disabled">
+                        <!-- 현황 영역 -->
+                        <ul class="meal__status js__meal-status__list">
+
+                            <!-- active 클래스 사용 -->
+                            <li class="meal__status__item js__meal-status__item active">
+                                <p class="meal__status__text meal__status__text--name">진행예정</p>
+                                <span class="meal__status__text meal__status__text--count js__meal-status__count">0</span>
+                            </li>
+                            <!-- active 클래스 사용 -->
+                            <li class="meal__status__item js__meal-status__item ">
+                                <p class="meal__status__text meal__status__text--name">진행중</p>
+                                <span class="meal__status__text meal__status__text--count js__meal-status__count">0</span>
+                            </li>
+                            <!-- active 클래스 사용 -->
+                            <li class="meal__status__item js__meal-status__item ">
+                                <p class="meal__status__text meal__status__text--name">시작일 미정</p>
+                                <span class="meal__status__text meal__status__text--count js__meal-status__count">0</span>
+                            </li>
+                            <!-- active 클래스 사용 -->
+                            <li class="meal__status__item js__meal-status__item ">
+                                <p class="meal__status__text meal__status__text--name">배송중단</p>
+                                <span class="meal__status__text meal__status__text--count js__meal-status__count">0</span>
+                            </li>
+                        </ul>
+    
+                        <!-- 상품 영역 -->
+                        <div class="meal__items js__meal-item__list">
+                            <!-- 진행예정 -->
+                            <!-- active 클래스 사용 -->
+                            <div class="meal__items__wrapper js__meal-item__content active">
+
+                                <div class="meal__items__empty">
+                                    <p class="empty__text" data-name="진행예정">진행예정인 식단이 없습니다.</p>
+                                </div>
+                            </div>
+                            <!-- 진행중 -->
+                            <!-- active 클래스 사용 -->
+                            <div class="meal__items__wrapper js__meal-item__content ">
+
+                                <div class="meal__items__empty">
+                                    <p class="empty__text" data-name="진행중">진행중인 식단이 없습니다.</p>
+                                </div>
+                            </div>
+                            <!-- 시작일 미정 -->
+                            <!-- active 클래스 사용 -->
+                            <div class="meal__items__wrapper js__meal-item__content ">
+
+                                <div class="meal__items__empty">
+                                    <p class="empty__text" data-name="시작일 미정">시작일 미정인 식단이 없습니다.</p>
+                                </div>
+                            </div>
+                            <!-- 배송중단 -->
+                            <!-- active 클래스 사용 -->
+                            <div class="meal__items__wrapper js__meal-item__content ">
+
+                                <div class="meal__items__empty">
+                                    <p class="empty__text" data-name="배송중단">배송중단인 식단이 없습니다.</p>
+                                </div>
+                            </div>
+
+                            <!-- 정기식단 없음 -->
+                            <div class="meal__items__wrapper meal__items__wrapper--empty">
+                                <div class="meal__items__empty">
+                                    <p class="empty__text">정기 식단이 없습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- 간식/유아용품 진행현황 -->
+                <div class="mymain__section__content" data-tab-content="goods">
+                    <div class="mymain__goods">
+                        
+                        <div class="mymain__goods__wrapper">
+                            <!-- 진행현황 -->
+                            <ul class="goods__status">
+                                <!-- 입금예정 -->
+                                <li class="goods__status__item">
+                                    <div class="goods__status__link devOrderStatusCnt" data-status="IR">
+                                        <strong class="goods__status__circle ">0</strong>
+                                        <p class="goods__status__name">입금예정</p>
+                                    </div>
+                                </li>
+        
+                                <!-- 입금확인 -->
+                                <li class="goods__status__item">
+                                    <div class="goods__status__link devOrderStatusCnt" data-status="IC">
+                                        <strong class="goods__status__circle ">0</strong>
+                                        <p class="goods__status__name">입금확인</p>
+                                    </div>
+                                </li>
+
+                                <!-- 배송준비중 -->
+                            <li class="goods__status__item">
+                                <div class="goods__status__link devOrderStatusCnt" data-status="DR">
+                                    <strong class="goods__status__circle ">0</strong>
+                                    <p class="goods__status__name">배송준비중</p>
+                                </div>
+                            </li>
+        
+                                <!-- 배송중 -->
+                                <li class="goods__status__item">
+                                    <div class="goods__status__link devOrderStatusCnt" data-status="DI">
+                                        <strong class="goods__status__circle ">0</strong>
+                                        <p class="goods__status__name">배송중</p>
+                                    </div>
+                                </li>
+        
+                                <!-- 배송완료 -->
+                                <li class="goods__status__item">
+                                    <div class="goods__status__link devOrderStatusCnt" data-status="DC">
+                                        <strong class="goods__status__circle ">0</strong>
+                                        <p class="goods__status__name">배송완료</p>
+                                    </div>
+                                </li>
+                            </ul>
+        
+                            <!-- 취소, 교환, 반품 -->
+                            <ul class="goods__option">
+                                <!-- 주문취소 -->
+                                <li class="goods__option__item devReturnStatusCnt" data-status="CA">
+                                    <span class="goods__option__text">취소</span>
+                                    <span class="goods__option__text goods__option__text--bold">0</span>
+                                </li>
+        
+                                <!-- 주문교환 -->
+                                <li class="goods__option__item devReturnStatusCnt" data-status="EA">
+                                    <span class="goods__option__text">교환</span>
+                                    <span class="goods__option__text goods__option__text--bold">0</span>
+                                </li>
+        
+                                <!-- 주문반품 -->
+                                <li class="goods__option__item devReturnStatusCnt" data-status="RA">
+                                    <span class="goods__option__text">반품</span>
+                                    <span class="goods__option__text goods__option__text--bold">0</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
