@@ -1,0 +1,34 @@
+<div style="margin-top: 1rem;">
+        <div class="swiper-container fb__swiperBanner js__swiperBanner swiper-container-initialized swiper-container-horizontal swiper-container-autoheight swiper-container-ios">
+    <div class="swiper-wrapper" style="height: 188px; transform: translate3d(-1125px, 0px, 0px); transition-duration: 0ms;"><a href="https://www.foodcare-cle.com/event/eventDetail/623" class="swiper-slide swiperBanner__banner swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="2" style="width: 375px;">
+            <figure class="swiperBanner__img">
+                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/banner/39/59dce4783447c1ff5ce0c3e36039e306.jpg" alt="M_마이페이지 메인 상시배너" data-position="16" data-name="M_마이페이지 메인 상시배너" data-title="동결건조" onerror="this.src='https://ouwimgwoshpz15793847.edge.naverncp.com/assets/mobile_templet/mobile_enterprise/images/common/noimg.gif'">
+            </figure>
+        </a>
+        <a href="https://www.foodcare-cle.com/event/eventDetail/628" class="swiper-slide swiperBanner__banner swiper-slide-duplicate-next" data-swiper-slide-index="0" style="width: 375px;">
+            <figure class="swiperBanner__img">
+                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/banner/39/503e6fee56d5a87839619a3888110141.jpg" alt="M_마이페이지 메인 상시배너" data-position="16" data-name="M_마이페이지 메인 상시배너" data-title="새해" onerror="this.src='https://ouwimgwoshpz15793847.edge.naverncp.com/assets/mobile_templet/mobile_enterprise/images/common/noimg.gif'">
+            </figure>
+        </a>
+        <a href="https://www.foodcare-cle.com/event/eventDetail/629" class="swiper-slide swiperBanner__banner swiper-slide-prev" data-swiper-slide-index="1" style="width: 375px;">
+            <figure class="swiperBanner__img">
+                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/banner/39/de029672635eefa48fc0e162478c9905.jpg" alt="M_마이페이지 메인 상시배너" data-position="16" data-name="M_마이페이지 메인 상시배너" data-title="등급업" onerror="this.src='https://ouwimgwoshpz15793847.edge.naverncp.com/assets/mobile_templet/mobile_enterprise/images/common/noimg.gif'">
+            </figure>
+        </a>
+        <a href="https://www.foodcare-cle.com/event/eventDetail/623" class="swiper-slide swiperBanner__banner swiper-slide-active" data-swiper-slide-index="2" style="width: 375px;">
+            <figure class="swiperBanner__img">
+                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/banner/39/59dce4783447c1ff5ce0c3e36039e306.jpg" alt="M_마이페이지 메인 상시배너" data-position="16" data-name="M_마이페이지 메인 상시배너" data-title="동결건조" onerror="this.src='https://ouwimgwoshpz15793847.edge.naverncp.com/assets/mobile_templet/mobile_enterprise/images/common/noimg.gif'">
+            </figure>
+        </a>
+    <a href="https://www.foodcare-cle.com/event/eventDetail/628" class="swiper-slide swiperBanner__banner swiper-slide-duplicate swiper-slide-next" data-swiper-slide-index="0" style="width: 375px;">
+            <figure class="swiperBanner__img">
+                <img src="https://ouwimgwoshpz15793847.edge.naverncp.com/data/mall_data/images/banner/39/503e6fee56d5a87839619a3888110141.jpg" alt="M_마이페이지 메인 상시배너" data-position="16" data-name="M_마이페이지 메인 상시배너" data-title="새해" onerror="this.src='https://ouwimgwoshpz15793847.edge.naverncp.com/assets/mobile_templet/mobile_enterprise/images/common/noimg.gif'">
+            </figure>
+        </a></div>
+
+    <!-- pagination -->
+    <div class="swiperBanner__pagination fb__bullet-pagination slider-pagination js__swiperBanner__pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3"></span></div>
+<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+
+<script src="/assets/mobile_templet/mobile_enterprise/_widget/banner/swiperBanner.js"></script>
+    </div>
